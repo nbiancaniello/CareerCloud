@@ -12,8 +12,9 @@ namespace CareerCloud.Pocos
     class SystemLanguageCodePoco
     {
         [Key]
-        public Char[] LanguageId { get; set; }
-        public String Name { get; set; }
-        public String NativeName { get; set; }
+        public string LanguageID { get; set; }
+        public string Name { get; set; }
+        [Column("Native_Name")]
+        public string NativeName { get; set; }
     }
 }

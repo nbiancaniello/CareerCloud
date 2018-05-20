@@ -15,16 +15,16 @@ namespace CareerCloud.Pocos
         public Guid Id { get; set; }
         public Guid Company { get; set; }
         [Column("Country_Code")]
-        public Char[] CountryCode { get; set; }
+        public string CountryCode { get; set; }
         [Column("State_Province_Code")]
-        public Char?[] StateProvinceCode { get; set; }
+        public string Province { get; set; }
         [Column("Street_Address")]
-        public String StreetAddress { get; set; }
+        public string Street { get; set; }
         [Column("City_Town")]
-        public String CityTown { get; set; }
+        public string City { get; set; }
         [Column("Zip_Postal_Code")]
-        public Char?[] ZipPostalCode { get; set; }
+        public string PostalCode { get; set; }
         [Column("Time_Stamp")]
-        public Byte[] TimeStamp { get; set; }
+        public byte[] TimeStamp { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CareerCloud.Pocos
 {
-    [Table("Application_Educations")]
+    [Table("Applicant_Educations")]
     public class ApplicantEducationPoco : IPoco
     {
         [Key]
@@ -22,7 +22,7 @@ namespace CareerCloud.Pocos
         [Column("Completion_Date")]
         public DateTime? CompletionDate { get; set; }
         [Column("Completion_Percent")]
-        public Byte? CompetionPercent { get; set; }
+        public Byte? CompletionPercent { get; set; }
         [Column("Time_Stamp")]
         public Byte[] TimeStamp { get; set; }
     }

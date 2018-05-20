@@ -16,14 +16,14 @@ namespace CareerCloud.Pocos
         [Column("Registration_Date")]
         public DateTime RegistrationDate { get; set; }
         [Column("Company_Website")]
-        public String CompanyWebsite { get; set; }
+        public string CompanyWebsite { get; set; }
         [Column("Contact_Phone")]
-        public String ContactPhone { get; set; }
+        public string ContactPhone { get; set; }
         [Column("Contact_Name")]
-        public String ContactName { get; set; }
+        public string ContactName { get; set; }
         [Column("Company_Logo")]
-        public Byte?[] CompanyLogo { get; set; }
+        public byte[] CompanyLogo { get; set; }
         [Column("Time_Stamp")]
-        public Byte?[] TimeStamp { get; set; }
+        public byte[] TimeStamp { get; set; }
     }
 }

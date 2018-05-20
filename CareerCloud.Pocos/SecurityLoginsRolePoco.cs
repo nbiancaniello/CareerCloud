@@ -8,17 +8,14 @@ using System.Threading.Tasks;
 
 namespace CareerCloud.Pocos
 {
-    [Table("Security_Logins_Log")]
-    class SecurityLoginLogPoco : IPoco
+    [Table("Security_Logins_Roles")]
+    class SecurityLoginsRolePoco : IPoco
     {
         [Key]
         public Guid Id { get; set; }
         public Guid Login { get; set; }
-        [Column("Source_IP")]
-        public Char[] SourceIP { get; set; }
-        [Column("Logon_Date")]
-        public DateTime LogonDate { get; set; }
-        [Column("Is_Succesful")]
-        public Boolean IsSuccesful { get; set; }
+        public Guid Role { get; set; }
+        [Column("Time_Stamp")]
+        public byte[] TimeStamp { get; set; }
     }
 }

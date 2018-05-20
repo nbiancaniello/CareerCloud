@@ -15,14 +15,14 @@ namespace CareerCloud.Pocos
         public Guid Id { get; set; }
         public Guid Applicant { get; set; }
         [Column("Company_Name")]
-        public String CompanyName { get; set; }
+        public string CompanyName { get; set; }
         [Column("Country_Code")]
-        public Char[] CountryCode { get; set; }
-        public String Location { get; set; }
+        public string CountryCode { get; set; }
+        public string Location { get; set; }
         [Column("Job_Title")]
-        public String JobTitle { get; set; }
+        public string JobTitle { get; set; }
         [Column("Job_Description")]
-        public String JobDescription { get; set; }
+        public string JobDescription { get; set; }
         [Column("Start_Month")]
         public Int16 StartMonth { get; set; }
         [Column("Start_Year")]
@@ -32,6 +32,6 @@ namespace CareerCloud.Pocos
         [Column("End_Year")]
         public Int32 EndYear { get; set; }
         [Column("Time_Stamp")]
-        public Byte[] TimeStamp { get; set; }
+        public byte[] TimeStamp { get; set; }
     }
 }
