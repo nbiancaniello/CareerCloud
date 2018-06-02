@@ -8,7 +8,7 @@ using CareerCloud.Pocos;
 
 namespace CareerCloud.ADODataAccessLayer
 {
-    class CompanyJobSkillRepository : IDataRepository<CompanyJobSkillPoco>
+    public class CompanyJobSkillRepository : IDataRepository<CompanyJobSkillPoco>
     {
         public void Add(params CompanyJobSkillPoco[] items)
         {
@@ -17,8 +17,13 @@ namespace CareerCloud.ADODataAccessLayer
             int rowsEffected = 0;
             foreach (CompanyJobSkillPoco poco in items)
             {
-                cmd.CommandText = @"INSERT INTO APPLICANT_EDUCATIONS () VALUES (@,@,@)";
+                cmd.CommandText = @"INSERT INTO Company_Job_Skills (Id, Job, Skill, Skill_Level, Importance) 
+                                    VALUES (@Id, @Job, @Skill, @Skill_Level, @Importance)";
                 cmd.Parameters.AddWithValue("@Id", poco.Id);
+                cmd.Parameters.AddWithValue("@Job", poco.Job);
+                cmd.Parameters.AddWithValue("@Skill", poco.Skill);
+                cmd.Parameters.AddWithValue("@Skill_Level", poco.SkillLevel);
+                cmd.Parameters.AddWithValue("@Importance", poco.Importance);
 
                 conn.Open();
                 rowsEffected = cmd.ExecuteNonQuery();

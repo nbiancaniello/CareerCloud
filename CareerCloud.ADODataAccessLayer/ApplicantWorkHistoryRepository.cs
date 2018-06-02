@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 
 namespace CareerCloud.ADODataAccessLayer
 {
-    class ApplicantWorkHistoryRepository : IDataRepository<ApplicantWorkHistoryPoco>
+    public class ApplicantWorkHistoryRepository : IDataRepository<ApplicantWorkHistoryPoco>
     {
         public void Add(params ApplicantWorkHistoryPoco[] items)
         {
@@ -17,8 +17,19 @@ namespace CareerCloud.ADODataAccessLayer
             int rowsEffected = 0;
             foreach (ApplicantWorkHistoryPoco poco in items)
             {
-                cmd.CommandText = @"INSERT INTO APPLICANT_EDUCATIONS () VALUES (@,@,@)";
+                cmd.CommandText = @"INSERT INTO Applicant_Work_History (Id, Applicant, Company_Name, Country_Code, Location, Job_Title, Job_Description, Start_Month, Start_Year, End_Month, End_Year)
+                                    VALUES (@Id, @Applicant, @Company_Name, @Country_Code, @Location, @Job_Title, @Job_Description, @Start_Month, @Start_Year, @End_Month, @End_Year)";
                 cmd.Parameters.AddWithValue("@Id", poco.Id);
+                cmd.Parameters.AddWithValue("@Applicant", poco.Applicant);
+                cmd.Parameters.AddWithValue("@Company_Name", poco.CompanyName);
+                cmd.Parameters.AddWithValue("@Country_Code", poco.CountryCode);
+                cmd.Parameters.AddWithValue("@Location", poco.Location);
+                cmd.Parameters.AddWithValue("@Job_Title", poco.JobTitle);
+                cmd.Parameters.AddWithValue("@Job_Description", poco.JobDescription);
+                cmd.Parameters.AddWithValue("@Start_Month", poco.StartMonth);
+                cmd.Parameters.AddWithValue("@Start_Year", poco.StartYear);
+                cmd.Parameters.AddWithValue("@End_Month", poco.EndMonth);
+                cmd.Parameters.AddWithValue("@End_Year", poco.EndYear);
 
                 conn.Open();
                 rowsEffected = cmd.ExecuteNonQuery();

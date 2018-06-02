@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace CareerCloud.ADODataAccessLayer
 {
-    class ApplicantResumeRepository : IDataRepository<ApplicantResumePoco>
+    public class ApplicantResumeRepository : IDataRepository<ApplicantResumePoco>
     {
         public void Add(params ApplicantResumePoco[] items)
         {
@@ -16,8 +16,12 @@ namespace CareerCloud.ADODataAccessLayer
             int rowsEffected = 0;
             foreach (ApplicantResumePoco poco in items)
             {
-                cmd.CommandText = @"INSERT INTO APPLICANT_EDUCATIONS () VALUES (@,@,@)";
+                cmd.CommandText = @"INSERT INTO Applicant_Resumes (Id, Applicant, Resume, Last_Updated)
+                                    VALUES (@Id, @Applicant, @Resume, @Last_Updated)";
                 cmd.Parameters.AddWithValue("@Id", poco.Id);
+                cmd.Parameters.AddWithValue("@Applicant", poco.Applicant);
+                cmd.Parameters.AddWithValue("@Resume", poco.Resume);
+                cmd.Parameters.AddWithValue("@Last_Updated", poco.LastUpdated);
 
                 conn.Open();
                 rowsEffected = cmd.ExecuteNonQuery();

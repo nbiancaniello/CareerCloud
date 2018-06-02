@@ -8,7 +8,7 @@ using CareerCloud.Pocos;
 
 namespace CareerCloud.ADODataAccessLayer
 {
-    class SecurityRoleRepository : IDataRepository<SecurityRolePoco>
+    public class SecurityRoleRepository : IDataRepository<SecurityRolePoco>
     {
         public void Add(params SecurityRolePoco[] items)
         {
@@ -17,8 +17,11 @@ namespace CareerCloud.ADODataAccessLayer
             int rowsEffected = 0;
             foreach (SecurityRolePoco poco in items)
             {
-                cmd.CommandText = @"INSERT INTO APPLICANT_EDUCATIONS () VALUES (@,@,@)";
+                cmd.CommandText = @"INSERT INTO Security_Roles (Id, Role, Is_Inactive) 
+                                    VALUES (@Id, @Role, @Is_Inactive)";
                 cmd.Parameters.AddWithValue("@Id", poco.Id);
+                cmd.Parameters.AddWithValue("@Role", poco.Role);
+                cmd.Parameters.AddWithValue("@Is_Inactive", poco.IsInactive);
 
                 conn.Open();
                 rowsEffected = cmd.ExecuteNonQuery();

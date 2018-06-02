@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CareerCloud.ADODataAccessLayer
 {
-    class ApplicantProfileRepository : IDataRepository<ApplicantProfilePoco>
+    public class ApplicantProfileRepository : IDataRepository<ApplicantProfilePoco>
     {
         public void Add(params ApplicantProfilePoco[] items)
         {
@@ -19,8 +19,18 @@ namespace CareerCloud.ADODataAccessLayer
             int rowsEffected = 0;
             foreach (ApplicantProfilePoco poco in items)
             {
-                cmd.CommandText = @"INSERT INTO APPLICANT_EDUCATIONS () VALUES (@,@,@)";
+                cmd.CommandText = @"INSERT INTO Applicant_Profiles (Id, Login, Current_Salary, Current_Rate, Currency, Country_Code, State_Province_Code, Street_Address, City_Town, Zip_Postal_Code) 
+                                    VALUES (@Id, @Login, @Current_Salary, @Current_Rate, @Currency, @Country_Code, @State_Province_Code, @Street_Address, @City_Town, @Zip_Postal_Code)";
                 cmd.Parameters.AddWithValue("@Id", poco.Id);
+                cmd.Parameters.AddWithValue("@Login", poco.Login);
+                cmd.Parameters.AddWithValue("@Current_Salary", poco.CurrentSalary);
+                cmd.Parameters.AddWithValue("@Current_Rate", poco.CurrentRate);
+                cmd.Parameters.AddWithValue("@Currency", poco.Currency);
+                cmd.Parameters.AddWithValue("@Country_Code", poco.Country);
+                cmd.Parameters.AddWithValue("@State_Province_Code", poco.Province);
+                cmd.Parameters.AddWithValue("@Street_Address", poco.Street);
+                cmd.Parameters.AddWithValue("@City_Town", poco.City);
+                cmd.Parameters.AddWithValue("@Zip_Postal_Code", poco.PostalCode);
 
                 conn.Open();
                 rowsEffected = cmd.ExecuteNonQuery();

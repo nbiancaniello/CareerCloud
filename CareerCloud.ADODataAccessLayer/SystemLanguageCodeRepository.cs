@@ -8,7 +8,7 @@ using CareerCloud.Pocos;
 
 namespace CareerCloud.ADODataAccessLayer
 {
-    class SystemLanguageCodeRepository : IDataRepository<SystemLanguageCodePoco>
+    public class SystemLanguageCodeRepository : IDataRepository<SystemLanguageCodePoco>
     {
         public void Add(params SystemLanguageCodePoco[] items)
         {
@@ -17,8 +17,11 @@ namespace CareerCloud.ADODataAccessLayer
             int rowsEffected = 0;
             foreach (SystemLanguageCodePoco poco in items)
             {
-                cmd.CommandText = @"INSERT INTO APPLICANT_EDUCATIONS () VALUES (@,@,@)";
-                //cmd.Parameters.AddWithValue("@Id", poco.Id);
+                cmd.CommandText = @"INSERT INTO System_Language_Codes (LanguageID, Name, Native_Name) 
+                                    VALUES (@LanguageID, @Name, @Native_Name)";
+                cmd.Parameters.AddWithValue("@LanguageID", poco.LanguageID);
+                cmd.Parameters.AddWithValue("@Name", poco.Name);
+                cmd.Parameters.AddWithValue("@Native_Name", poco.NativeName);
 
                 conn.Open();
                 rowsEffected = cmd.ExecuteNonQuery();
