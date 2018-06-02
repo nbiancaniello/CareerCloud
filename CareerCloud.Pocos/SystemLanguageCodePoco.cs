@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CareerCloud.Pocos
 {
     [Table("System_Language_Codes")]
-    class SystemLanguageCodePoco
+    public class SystemLanguageCodePoco
     {
         [Key]
         public string LanguageID { get; set; }

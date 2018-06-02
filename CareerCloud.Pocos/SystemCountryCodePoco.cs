@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CareerCloud.Pocos
 {
     [Table("System_Country_Codes")]
-    class SystemCountryCodePoco
+    public class SystemCountryCodePoco
     {
         [Key]
         public string Code { get; set; }
