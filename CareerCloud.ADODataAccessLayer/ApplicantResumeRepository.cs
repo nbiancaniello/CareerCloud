@@ -4,29 +4,33 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace CareerCloud.ADODataAccessLayer
 {
-    public class ApplicantResumeRepository : IDataRepository<ApplicantResumePoco>
+    public class ApplicantResumeRepository : BaseADO, IDataRepository<ApplicantResumePoco>
     {
         public void Add(params ApplicantResumePoco[] items)
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString);
-            SqlCommand cmd = new SqlCommand();
-            int rowsEffected = 0;
-            foreach (ApplicantResumePoco poco in items)
+            using (_connection)
             {
-                cmd.CommandText = @"INSERT INTO Applicant_Resumes (Id, Applicant, Resume, Last_Updated)
-                                    VALUES (@Id, @Applicant, @Resume, @Last_Updated)";
-                cmd.Parameters.AddWithValue("@Id", poco.Id);
-                cmd.Parameters.AddWithValue("@Applicant", poco.Applicant);
-                cmd.Parameters.AddWithValue("@Resume", poco.Resume);
-                cmd.Parameters.AddWithValue("@Last_Updated", poco.LastUpdated);
+                SqlCommand cmd = new SqlCommand();
+                int rowsEffected = 0;
+                foreach (ApplicantResumePoco poco in items)
+                {
+                    cmd.CommandText = @"INSERT INTO Applicant_Resumes (Id, Applicant, Resume, Last_Updated)
+                                    VALUES (@Id, @Applicant, @Resume, @LastUpdated)";
+                    cmd.Parameters.AddWithValue("@Id", poco.Id);
+                    cmd.Parameters.AddWithValue("@Applicant", poco.Applicant);
+                    cmd.Parameters.AddWithValue("@Resume", poco.Resume);
+                    cmd.Parameters.AddWithValue("@LastUpdated", poco.LastUpdated);
 
-                conn.Open();
-                rowsEffected = cmd.ExecuteNonQuery();
-                conn.Close();
+                    _connection.Open();
+                    rowsEffected = cmd.ExecuteNonQuery();
+                    _connection.Close();
+                }
             }
+            
         }
 
         public void CallStoredProc(string name, params Tuple<string, string>[] parameters)
@@ -36,7 +40,29 @@ namespace CareerCloud.ADODataAccessLayer
 
         public IList<ApplicantResumePoco> GetAll(params System.Linq.Expressions.Expression<Func<ApplicantResumePoco, object>>[] navigationProperties)
         {
-            throw new NotImplementedException();
+            ApplicantResumePoco[] pocos = new ApplicantResumePoco[1000];
+            using (_connection)
+            {
+                SqlCommand cmd = new SqlCommand
+                {
+                    CommandText = "SELECT * FROM Applicant_Resumes"
+                };
+                int position = 0;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ApplicantResumePoco poco = new ApplicantResumePoco
+                    {
+                        Id = reader.GetGuid(0),
+                        Applicant = reader.GetGuid(1),
+                        Resume = reader.GetString(2),
+                        LastUpdated = (DateTime?)(reader.IsDBNull(3) ? null : reader[3])
+                    };
+                    pocos[position] = poco;
+                    position++;
+                }
+            }
+            return pocos;
         }
 
         public IList<ApplicantResumePoco> GetList(System.Linq.Expressions.Expression<Func<ApplicantResumePoco, bool>> where, params System.Linq.Expressions.Expression<Func<ApplicantResumePoco, object>>[] navigationProperties)
@@ -46,17 +72,51 @@ namespace CareerCloud.ADODataAccessLayer
 
         public ApplicantResumePoco GetSingle(System.Linq.Expressions.Expression<Func<ApplicantResumePoco, bool>> where, params System.Linq.Expressions.Expression<Func<ApplicantResumePoco, object>>[] navigationProperties)
         {
-            throw new NotImplementedException();
+            IQueryable<ApplicantResumePoco> pocos = GetAll().AsQueryable();
+            return pocos.Where(where).FirstOrDefault();
         }
 
         public void Remove(params ApplicantResumePoco[] items)
         {
-            throw new NotImplementedException();
+            using (_connection)
+            {
+                SqlCommand cmd = new SqlCommand();
+                int rowsEffected = 0;
+
+                foreach (ApplicantResumePoco poco in items)
+                {
+                    cmd.CommandText = "DELETE FROM Applicant_Resumes WHERE Id = @Id";
+                    cmd.Parameters.AddWithValue("@Id", poco.Id);
+
+                    _connection.Open();
+                    rowsEffected = cmd.ExecuteNonQuery();
+                    _connection.Close();
+                }
+            }
         }
 
         public void Update(params ApplicantResumePoco[] items)
         {
-            throw new NotImplementedException();
+            using (_connection)
+            {
+                SqlCommand cmd = new SqlCommand();
+                int rowsEffected = 0;
+                foreach (ApplicantResumePoco poco in items)
+                {
+                    cmd.CommandText = @"UPDATE Applicant_Resumes
+                                        SET Applicant = @Applicant, 
+                                            Resume = @Resume,
+                                            Last_Updated = @LastUpdated
+                                        WHERE Id = @Id";
+                    cmd.Parameters.AddWithValue("@Id", poco.Id);
+                    cmd.Parameters.AddWithValue("@Applicant", poco.Applicant);
+                    cmd.Parameters.AddWithValue("@Resume", poco.Resume);
+                    cmd.Parameters.AddWithValue("@LastUpdated", poco.LastUpdated);
+                    _connection.Open();
+                    rowsEffected = cmd.ExecuteNonQuery();
+                    _connection.Close();
+                }
+            }
         }
     }
 }

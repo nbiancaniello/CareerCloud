@@ -2,31 +2,35 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Linq.Expressions;
 using CareerCloud.DataAccessLayer;
 using CareerCloud.Pocos;
 
 namespace CareerCloud.ADODataAccessLayer
 {
-    public class SecurityRoleRepository : IDataRepository<SecurityRolePoco>
+    public class SecurityRoleRepository : BaseADO, IDataRepository<SecurityRolePoco>
     {
         public void Add(params SecurityRolePoco[] items)
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString);
-            SqlCommand cmd = new SqlCommand();
-            int rowsEffected = 0;
-            foreach (SecurityRolePoco poco in items)
+            using (_connection)
             {
-                cmd.CommandText = @"INSERT INTO Security_Roles (Id, Role, Is_Inactive) 
-                                    VALUES (@Id, @Role, @Is_Inactive)";
-                cmd.Parameters.AddWithValue("@Id", poco.Id);
-                cmd.Parameters.AddWithValue("@Role", poco.Role);
-                cmd.Parameters.AddWithValue("@Is_Inactive", poco.IsInactive);
+                SqlCommand cmd = new SqlCommand();
+                int rowsEffected = 0;
+                foreach (SecurityRolePoco poco in items)
+                {
+                    cmd.CommandText = @"INSERT INTO Security_Roles (Id, Role, Is_Inactive) 
+                                    VALUES (@Id, @Role, @IsInactive)";
+                    cmd.Parameters.AddWithValue("@Id", poco.Id);
+                    cmd.Parameters.AddWithValue("@Role", poco.Role);
+                    cmd.Parameters.AddWithValue("@IsInactive", poco.IsInactive);
 
-                conn.Open();
-                rowsEffected = cmd.ExecuteNonQuery();
-                conn.Close();
+                    _connection.Open();
+                    rowsEffected = cmd.ExecuteNonQuery();
+                    _connection.Close();
+                }
             }
+            
         }
 
         public void CallStoredProc(string name, params Tuple<string, string>[] parameters)
@@ -36,7 +40,34 @@ namespace CareerCloud.ADODataAccessLayer
 
         public IList<SecurityRolePoco> GetAll(params Expression<Func<SecurityRolePoco, object>>[] navigationProperties)
         {
-            throw new NotImplementedException();
+            SecurityRolePoco[] pocos = new SecurityRolePoco[1000];
+            using (_connection)
+            {
+                SqlCommand cmd = new SqlCommand
+                {
+                    CommandText = "SELECT * FROM Security_Roles"
+                };
+
+                _connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                int position = 0;
+                while (reader.Read())
+                {
+                    SecurityRolePoco poco = new SecurityRolePoco
+                    {
+                        Id = reader.GetGuid(0),
+                        Role = reader.GetString(1),
+                        IsInactive = reader.GetBoolean(2)
+                    };
+
+                    pocos[position] = poco;
+                    position++;
+                }
+                _connection.Close();
+            }
+
+            return pocos;
         }
 
         public IList<SecurityRolePoco> GetList(Expression<Func<SecurityRolePoco, bool>> where, params Expression<Func<SecurityRolePoco, object>>[] navigationProperties)
@@ -46,17 +77,49 @@ namespace CareerCloud.ADODataAccessLayer
 
         public SecurityRolePoco GetSingle(Expression<Func<SecurityRolePoco, bool>> where, params Expression<Func<SecurityRolePoco, object>>[] navigationProperties)
         {
-            throw new NotImplementedException();
+            IQueryable<SecurityRolePoco> pocos = GetAll().AsQueryable();
+            return pocos.Where(where).FirstOrDefault();
         }
 
         public void Remove(params SecurityRolePoco[] items)
         {
-            throw new NotImplementedException();
+            using (_connection)
+            {
+                SqlCommand cmd = new SqlCommand();
+                int rowsEffected = 0;
+                foreach (SecurityRolePoco poco in items)
+                {
+                    cmd.CommandText = @"DELETE FROM Security_Roles WHERE Id = @Id";
+                    cmd.Parameters.AddWithValue("@Id", poco.Id);
+
+                    _connection.Open();
+                    rowsEffected = cmd.ExecuteNonQuery();
+                    _connection.Close();
+                }
+            }
         }
 
         public void Update(params SecurityRolePoco[] items)
         {
-            throw new NotImplementedException();
+            using (_connection)
+            {
+                SqlCommand cmd = new SqlCommand();
+                int rowsEffected = 0;
+                foreach (SecurityRolePoco poco in items)
+                {
+                    cmd.CommandText = @"UPDATE Security_Roles 
+                                        SET Role = @Role, 
+	                                        Is_Inactive = @IsInactive 
+                                        WHERE Id = @Id";
+                    cmd.Parameters.AddWithValue("@Id", poco.Id);
+                    cmd.Parameters.AddWithValue("@Role", poco.Role);
+                    cmd.Parameters.AddWithValue("@IsInactive", poco.IsInactive);
+
+                    _connection.Open();
+                    rowsEffected = cmd.ExecuteNonQuery();
+                    _connection.Close();
+                }
+            }
         }
     }
 }

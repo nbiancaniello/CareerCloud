@@ -47,6 +47,7 @@
     <Compile Include="ApplicantResumeRepository.cs" />
     <Compile Include="ApplicantSkillRepository.cs" />
     <Compile Include="ApplicantWorkHistoryRepository.cs" />
+    <Compile Include="BaseADO.cs" />
     <Compile Include="CompanyDescriptionRepository.cs" />
     <Compile Include="CompanyJobDescriptionRepository.cs" />
     <Compile Include="CompanyJobEducationRepository.cs" />
