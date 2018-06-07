@@ -13,27 +13,26 @@ namespace CareerCloud.ADODataAccessLayer
     {
         public void Add(params CompanyProfilePoco[] items)
         {
-            using (_connection)
+            SqlCommand cmd = new SqlCommand()
             {
-                SqlCommand cmd = new SqlCommand();
-                int rowsEffected = 0;
-                foreach (CompanyProfilePoco poco in items)
-                {
-                    cmd.CommandText = @"INSERT INTO Company_Profiles (Id, Registration_Date, Company_Website, Contact_Phone, Contact_Name, Company_Logo)
-                                    VALUES (@Id, @RegistrationDate, @CompanyWebsite, @ContactPhone, @ContactName, @CompanyLogo)";
-                    cmd.Parameters.AddWithValue("@Id", poco.Id);
-                    cmd.Parameters.AddWithValue("@RegistrationDate", poco.RegistrationDate);
-                    cmd.Parameters.AddWithValue("@CompanyWebsite", poco.CompanyWebsite);
-                    cmd.Parameters.AddWithValue("@ContactPhone", poco.ContactPhone);
-                    cmd.Parameters.AddWithValue("@ContactName", poco.ContactName);
-                    cmd.Parameters.AddWithValue("@CompanyLogo", poco.CompanyLogo);
+                Connection = _connection
+            };
+            int rowsEffected = 0;
+            foreach (CompanyProfilePoco poco in items)
+            {
+                cmd.CommandText = @"INSERT INTO Company_Profiles (Id, Registration_Date, Company_Website, Contact_Phone, Contact_Name, Company_Logo)
+                                VALUES (@Id, @RegistrationDate, @CompanyWebsite, @ContactPhone, @ContactName, @CompanyLogo)";
+                cmd.Parameters.AddWithValue("@Id", poco.Id);
+                cmd.Parameters.AddWithValue("@RegistrationDate", poco.RegistrationDate);
+                cmd.Parameters.AddWithValue("@CompanyWebsite", poco.CompanyWebsite);
+                cmd.Parameters.AddWithValue("@ContactPhone", poco.ContactPhone);
+                cmd.Parameters.AddWithValue("@ContactName", poco.ContactName);
+                cmd.Parameters.AddWithValue("@CompanyLogo", poco.CompanyLogo);
 
-                    _connection.Open();
-                    rowsEffected = cmd.ExecuteNonQuery();
-                    _connection.Close();
-                }
+                _connection.Open();
+                rowsEffected = cmd.ExecuteNonQuery();
+                _connection.Close();
             }
-            
         }
 
         public void CallStoredProc(string name, params Tuple<string, string>[] parameters)
@@ -44,36 +43,33 @@ namespace CareerCloud.ADODataAccessLayer
         public IList<CompanyProfilePoco> GetAll(params Expression<Func<CompanyProfilePoco, object>>[] navigationProperties)
         {
             CompanyProfilePoco[] pocos = new CompanyProfilePoco[1000];
-            using (_connection)
+            SqlCommand cmd = new SqlCommand
+            {   
+                Connection = _connection,
+                CommandText = "SELECT * FROM Company_Profiles"
+            };
+
+            _connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            int position = 0;
+            while (reader.Read())
             {
-                SqlCommand cmd = new SqlCommand
+                CompanyProfilePoco poco = new CompanyProfilePoco
                 {
-                    CommandText = "SELECT * FROM Company_Profiles"
+                    Id = reader.GetGuid(0),
+                    RegistrationDate = reader.GetDateTime(1),
+                    CompanyWebsite = reader.GetString(2),
+                    ContactPhone= reader.GetString(3),
+                    ContactName = reader.GetString(4),
+                    CompanyLogo = (byte[])reader[5],
+                    TimeStamp = (byte[])reader[6]
                 };
 
-                _connection.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                int position = 0;
-                while (reader.Read())
-                {
-                    CompanyProfilePoco poco = new CompanyProfilePoco
-                    {
-                        Id = reader.GetGuid(0),
-                        RegistrationDate = reader.GetDateTime(1),
-                        CompanyWebsite = reader.GetString(2),
-                        ContactPhone= reader.GetString(3),
-                        ContactName = reader.GetString(4),
-                        CompanyLogo = (byte[])reader[5],
-                        TimeStamp = (byte[])reader[6]
-                    };
-
-                    pocos[position] = poco;
-                    position++;
-                }
-                _connection.Close();
+                pocos[position] = poco;
+                position++;
             }
-
+            _connection.Close();
             return pocos;
         }
 
@@ -90,48 +86,48 @@ namespace CareerCloud.ADODataAccessLayer
 
         public void Remove(params CompanyProfilePoco[] items)
         {
-            using (_connection)
+            SqlCommand cmd = new SqlCommand()
             {
-                SqlCommand cmd = new SqlCommand();
-                int rowsEffected = 0;
-                foreach (CompanyProfilePoco poco in items)
-                {
-                    cmd.CommandText = @"DELETE FROM Company_Profiles WHERE Id = @Id";
-                    cmd.Parameters.AddWithValue("@Id", poco.Id);
+                Connection = _connection
+            };
+            int rowsEffected = 0;
+            foreach (CompanyProfilePoco poco in items)
+            {
+                cmd.CommandText = @"DELETE FROM Company_Profiles WHERE Id = @Id";
+                cmd.Parameters.AddWithValue("@Id", poco.Id);
 
-                    _connection.Open();
-                    rowsEffected = cmd.ExecuteNonQuery();
-                    _connection.Close();
-                }
+                _connection.Open();
+                rowsEffected = cmd.ExecuteNonQuery();
+                _connection.Close();
             }
         }
 
         public void Update(params CompanyProfilePoco[] items)
         {
-            using (_connection)
+            SqlCommand cmd = new SqlCommand()
             {
-                SqlCommand cmd = new SqlCommand();
-                int rowsEffected = 0;
-                foreach (CompanyProfilePoco poco in items)
-                {
-                    cmd.CommandText = @"UPDATE Company_Profiles 
-                                        SET Registration_Date = @RegistrationDate, 
-	                                        Company_Website = @CompanyWebsite, 
-	                                        Contact_Phone = @ContactPhone, 
-	                                        Contact_Name = @ContactName, 
-	                                        Company_Logo= @CompanyLogo
-                                        WHERE Id = @Id";
-                    cmd.Parameters.AddWithValue("@Id", poco.Id);
-                    cmd.Parameters.AddWithValue("@RegistrationDate", poco.RegistrationDate);
-                    cmd.Parameters.AddWithValue("@CompanyWebsite", poco.CompanyWebsite);
-                    cmd.Parameters.AddWithValue("@ContactPhone", poco.ContactPhone);
-                    cmd.Parameters.AddWithValue("@ContactName", poco.ContactName);
-                    cmd.Parameters.AddWithValue("@CompanyLogo", poco.CompanyLogo);
+                Connection = _connection
+            };
+            int rowsEffected = 0;
+            foreach (CompanyProfilePoco poco in items)
+            {
+                cmd.CommandText = @"UPDATE Company_Profiles 
+                                    SET Registration_Date = @RegistrationDate, 
+	                                    Company_Website = @CompanyWebsite, 
+	                                    Contact_Phone = @ContactPhone, 
+	                                    Contact_Name = @ContactName, 
+	                                    Company_Logo= @CompanyLogo
+                                    WHERE Id = @Id";
+                cmd.Parameters.AddWithValue("@Id", poco.Id);
+                cmd.Parameters.AddWithValue("@RegistrationDate", poco.RegistrationDate);
+                cmd.Parameters.AddWithValue("@CompanyWebsite", poco.CompanyWebsite);
+                cmd.Parameters.AddWithValue("@ContactPhone", poco.ContactPhone);
+                cmd.Parameters.AddWithValue("@ContactName", poco.ContactName);
+                cmd.Parameters.AddWithValue("@CompanyLogo", poco.CompanyLogo);
                     
-                    _connection.Open();
-                    rowsEffected = cmd.ExecuteNonQuery();
-                    _connection.Close();
-                }
+                _connection.Open();
+                rowsEffected = cmd.ExecuteNonQuery();
+                _connection.Close();
             }
         }
     }

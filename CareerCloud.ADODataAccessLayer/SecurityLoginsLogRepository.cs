@@ -13,9 +13,10 @@ namespace CareerCloud.ADODataAccessLayer
     {
         public void Add(params SecurityLoginsLogPoco[] items)
         {
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = conn;
+            SqlCommand cmd = new SqlCommand()
+            {
+                Connection = _connection
+            };
             int rowsEffected = 0;
             foreach (SecurityLoginsLogPoco poco in items)
             {
@@ -27,9 +28,9 @@ namespace CareerCloud.ADODataAccessLayer
                 cmd.Parameters.AddWithValue("@LogonDate", poco.LogonDate);
                 cmd.Parameters.AddWithValue("@IsSuccesful", poco.IsSuccesful);
 
-                conn.Open();
+                _connection.Open();
                 rowsEffected = cmd.ExecuteNonQuery();
-                conn.Close();
+                _connection.Close();
             }
         }
 
@@ -41,33 +42,31 @@ namespace CareerCloud.ADODataAccessLayer
         public IList<SecurityLoginsLogPoco> GetAll(params Expression<Func<SecurityLoginsLogPoco, object>>[] navigationProperties)
         {
             SecurityLoginsLogPoco[] pocos = new SecurityLoginsLogPoco[1000];
-            using (_connection)
+            SqlCommand cmd = new SqlCommand
             {
-                SqlCommand cmd = new SqlCommand
+                Connection = _connection,
+                CommandText = "SELECT * FROM Security_Logins_Log"
+            };
+
+            _connection.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            int position = 0;
+            while (reader.Read())
+            {
+                SecurityLoginsLogPoco poco = new SecurityLoginsLogPoco
                 {
-                    CommandText = "SELECT * FROM Security_Logins_Log"
+                    Id = reader.GetGuid(0),
+                    Login = reader.GetGuid(1),
+                    SourceIP = reader.GetString(2),
+                    LogonDate = reader.GetDateTime(3),
+                    IsSuccesful = reader.GetBoolean(4)
                 };
 
-                _connection.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                int position = 0;
-                while (reader.Read())
-                {
-                    SecurityLoginsLogPoco poco = new SecurityLoginsLogPoco
-                    {
-                        Id = reader.GetGuid(0),
-                        Login = reader.GetGuid(1),
-                        SourceIP = reader.GetString(2),
-                        LogonDate = reader.GetDateTime(3),
-                        IsSuccesful = reader.GetBoolean(4)
-                    };
-
-                    pocos[position] = poco;
-                    position++;
-                }
-                _connection.Close();
+                pocos[position] = poco;
+                position++;
             }
+            _connection.Close();
 
             return pocos;
         }
@@ -85,46 +84,46 @@ namespace CareerCloud.ADODataAccessLayer
 
         public void Remove(params SecurityLoginsLogPoco[] items)
         {
-            using (_connection)
+            SqlCommand cmd = new SqlCommand()
             {
-                SqlCommand cmd = new SqlCommand();
+                Connection = _connection
+            };
                 int rowsEffected = 0;
-                foreach (SecurityLoginsLogPoco poco in items)
-                {
-                    cmd.CommandText = @"DELETE FROM Security_Logins_Log WHERE Id = @Id";
-                    cmd.Parameters.AddWithValue("@Id", poco.Id);
+            foreach (SecurityLoginsLogPoco poco in items)
+            {
+                cmd.CommandText = @"DELETE FROM Security_Logins_Log WHERE Id = @Id";
+                cmd.Parameters.AddWithValue("@Id", poco.Id);
 
-                    _connection.Open();
-                    rowsEffected = cmd.ExecuteNonQuery();
-                    _connection.Close();
-                }
+                _connection.Open();
+                rowsEffected = cmd.ExecuteNonQuery();
+                _connection.Close();
             }
         }
 
         public void Update(params SecurityLoginsLogPoco[] items)
         {
-            using (_connection)
+            SqlCommand cmd = new SqlCommand()
             {
-                SqlCommand cmd = new SqlCommand();
-                int rowsEffected = 0;
-                foreach (SecurityLoginsLogPoco poco in items)
-                {
-                    cmd.CommandText = @"UPDATE Security_Logins_Log 
-                                        SET Login = @Login, 
-                                            Source_IP = @SourceIP, 
-                                            Logon_Date = @LogonDate, 
-                                            Is_Succesful = @IsSuccessful 
-                                        WHERE Id = @Id";
-                    cmd.Parameters.AddWithValue("@Id", poco.Id);
-                    cmd.Parameters.AddWithValue("@Login", poco.Login);
-                    cmd.Parameters.AddWithValue("@SourceIP", poco.SourceIP);
-                    cmd.Parameters.AddWithValue("@LogonDate", poco.LogonDate);
-                    cmd.Parameters.AddWithValue("@IsSuccesful", poco.IsSuccesful);
+                Connection = _connection
+            };
+            int rowsEffected = 0;
+            foreach (SecurityLoginsLogPoco poco in items)
+            {
+                cmd.CommandText = @"UPDATE Security_Logins_Log 
+                                    SET Login = @Login, 
+                                        Source_IP = @SourceIP, 
+                                        Logon_Date = @LogonDate, 
+                                        Is_Succesful = @IsSuccessful 
+                                    WHERE Id = @Id";
+                cmd.Parameters.AddWithValue("@Id", poco.Id);
+                cmd.Parameters.AddWithValue("@Login", poco.Login);
+                cmd.Parameters.AddWithValue("@SourceIP", poco.SourceIP);
+                cmd.Parameters.AddWithValue("@LogonDate", poco.LogonDate);
+                cmd.Parameters.AddWithValue("@IsSuccesful", poco.IsSuccesful);
 
-                    _connection.Open();
-                    rowsEffected = cmd.ExecuteNonQuery();
-                    _connection.Close();
-                }
+                _connection.Open();
+                rowsEffected = cmd.ExecuteNonQuery();
+                _connection.Close();
             }
         }
     }
