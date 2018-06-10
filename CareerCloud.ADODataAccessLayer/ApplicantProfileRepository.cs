@@ -22,7 +22,7 @@ namespace CareerCloud.ADODataAccessLayer
             foreach (ApplicantProfilePoco poco in items)
             {
                 cmd.CommandText = @"INSERT INTO Applicant_Profiles (Id, Login, Current_Salary, Current_Rate, Currency, Country_Code, State_Province_Code, Street_Address, City_Town, Zip_Postal_Code) 
-                                VALUES (@Id, @Login, @CurrentSalary, @CurrentRate, @Currency, @CountryCode, @SProvince, @Street, @City, @PostalCode)";
+                                VALUES (@Id, @Login, @CurrentSalary, @CurrentRate, @Currency, @Country, @Province, @Street, @City, @PostalCode)";
                 cmd.Parameters.AddWithValue("@Id", poco.Id);
                 cmd.Parameters.AddWithValue("@Login", poco.Login);
                 cmd.Parameters.AddWithValue("@CurrentSalary", poco.CurrentSalary);
@@ -76,7 +76,8 @@ namespace CareerCloud.ADODataAccessLayer
                 pocos[position] = poco;
                 position++;
             }
-            return pocos;
+            _connection.Close();
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<ApplicantProfilePoco> GetList(System.Linq.Expressions.Expression<Func<ApplicantProfilePoco, bool>> where, params System.Linq.Expressions.Expression<Func<ApplicantProfilePoco, object>>[] navigationProperties)
@@ -121,7 +122,7 @@ namespace CareerCloud.ADODataAccessLayer
                                     SET Login = @Login,
                                         Current_Salary = @CurrentSalary,
                                         Current_Rate = @CurrentRate,
-                                        Currency = @Currency
+                                        Currency = @Currency,
                                         Country_Code = @Country,
                                         State_Province_Code = @Province,
                                         Street_Address = @Street,
@@ -133,7 +134,7 @@ namespace CareerCloud.ADODataAccessLayer
                 cmd.Parameters.AddWithValue("@CurrentSalary", poco.CurrentSalary);
                 cmd.Parameters.AddWithValue("@CurrentRate", poco.CurrentRate);
                 cmd.Parameters.AddWithValue("@Currency", poco.Currency);
-                cmd.Parameters.AddWithValue("@CountryCode", poco.Country);
+                cmd.Parameters.AddWithValue("@Country", poco.Country);
                 cmd.Parameters.AddWithValue("@Province", poco.Province);
                 cmd.Parameters.AddWithValue("@Street", poco.Street);
                 cmd.Parameters.AddWithValue("@City", poco.City);

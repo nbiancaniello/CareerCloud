@@ -81,7 +81,7 @@ namespace CareerCloud.ADODataAccessLayer
                 position++;
             }
             _connection.Close();
-            return pocos;
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<ApplicantWorkHistoryPoco> GetList(Expression<Func<ApplicantWorkHistoryPoco, bool>> where, params Expression<Func<ApplicantWorkHistoryPoco, object>>[] navigationProperties)
@@ -125,7 +125,7 @@ namespace CareerCloud.ADODataAccessLayer
                 cmd.CommandText = @"UPDATE Applicant_Work_History
                                     SET Applicant = @Applicant, 
 	                                    Company_Name = @CompanyName, 
-	                                    Country_Code = @CountryCodes, 
+	                                    Country_Code = @CountryCode, 
 	                                    Location = @Location, 
 	                                    Job_Title = @JobTitle, 
 	                                    Job_Description = @JobDescription,
@@ -140,6 +140,7 @@ namespace CareerCloud.ADODataAccessLayer
                 cmd.Parameters.AddWithValue("@CountryCode", poco.CountryCode);
                 cmd.Parameters.AddWithValue("@Location", poco.Location);
                 cmd.Parameters.AddWithValue("@JobTitle", poco.JobTitle);
+                cmd.Parameters.AddWithValue("@JobDescription", poco.JobDescription);
                 cmd.Parameters.AddWithValue("@StartMonth", poco.StartMonth);
                 cmd.Parameters.AddWithValue("@StartYear", poco.StartYear);
                 cmd.Parameters.AddWithValue("@EndMonth", poco.EndMonth);

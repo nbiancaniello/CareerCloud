@@ -73,7 +73,7 @@ namespace CareerCloud.ADODataAccessLayer
                 position++;
             }
             _connection.Close();
-            return pocos;
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<ApplicantSkillPoco> GetList(System.Linq.Expressions.Expression<Func<ApplicantSkillPoco, bool>> where, params System.Linq.Expressions.Expression<Func<ApplicantSkillPoco, object>>[] navigationProperties)

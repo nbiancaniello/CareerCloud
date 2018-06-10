@@ -20,12 +20,13 @@ namespace CareerCloud.ADODataAccessLayer
             int rowsEffected = 0;
             foreach (CompanyJobPoco poco in items)
             {
-                cmd.CommandText = @"INSERT INTO Company_Jobs (Id, Company, Is_Inactive, Is_Company_Hidden) 
-                                VALUES (@Id, @Company, @IsInactive, @IsCompanyHidden)";
+                cmd.CommandText = @"INSERT INTO Company_Jobs (Id, Company, Profile_Created, Is_Inactive, Is_Company_Hidden) 
+                                VALUES (@Id, @Company, @Profile_Created, @IsInactive, @IsCompanyHidden)";
                 cmd.Parameters.AddWithValue("@Id", poco.Id);
                 cmd.Parameters.AddWithValue("@Company", poco.Company);
+                cmd.Parameters.AddWithValue("@Profile_Created", poco.ProfileCreated);
                 cmd.Parameters.AddWithValue("@IsInactive", poco.IsInactive);
-                cmd.Parameters.AddWithValue("@IsCompany_Hidden", poco.IsCompanyHidden);
+                cmd.Parameters.AddWithValue("@IsCompanyHidden", poco.IsCompanyHidden);
 
                 _connection.Open();
                 rowsEffected = cmd.ExecuteNonQuery();
@@ -41,7 +42,7 @@ namespace CareerCloud.ADODataAccessLayer
 
         public IList<CompanyJobPoco> GetAll(params Expression<Func<CompanyJobPoco, object>>[] navigationProperties)
         {
-            CompanyJobPoco[] pocos = new CompanyJobPoco[1000];
+            CompanyJobPoco[] pocos = new CompanyJobPoco[1001];
             SqlCommand cmd = new SqlCommand
             {
                 Connection = _connection,
@@ -68,7 +69,7 @@ namespace CareerCloud.ADODataAccessLayer
                 position++;
             }
             _connection.Close();
-            return pocos;
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<CompanyJobPoco> GetList(Expression<Func<CompanyJobPoco, bool>> where, params Expression<Func<CompanyJobPoco, object>>[] navigationProperties)
@@ -113,7 +114,7 @@ namespace CareerCloud.ADODataAccessLayer
                                     SET Company = @Company, 
 	                                    Profile_Created = @ProfileCreated, 
 	                                    Is_Inactive = @IsInactive, 
-	                                    Is_Company_Hidden = @IsCompanyHidden, 
+	                                    Is_Company_Hidden = @IsCompanyHidden 
                                     WHERE Id = @Id";
                 cmd.Parameters.AddWithValue("@Id", poco.Id);
                 cmd.Parameters.AddWithValue("@Company", poco.Company);

@@ -20,11 +20,11 @@ namespace CareerCloud.ADODataAccessLayer
             int rowsEffected = 0;
             foreach (CompanyDescriptionPoco poco in items)
             {
-                cmd.CommandText = @"INSERT INTO Company_Descriptions (Id, Company, Language, Company_Name, Company_Description) 
-                                VALUES (@Id, @Company, @Language, @CompanyName, @CompanyDescription)";
+                cmd.CommandText = @"INSERT INTO Company_Descriptions (Id, Company, LanguageID, Company_Name, Company_Description) 
+                                VALUES (@Id, @Company, @LanguageId, @CompanyName, @CompanyDescription)";
                 cmd.Parameters.AddWithValue("@Id", poco.Id);
                 cmd.Parameters.AddWithValue("@Company", poco.Company);
-                cmd.Parameters.AddWithValue("@Language", poco.LanguageId);
+                cmd.Parameters.AddWithValue("@LanguageId", poco.LanguageId);
                 cmd.Parameters.AddWithValue("@CompanyName", poco.CompanyName);
                 cmd.Parameters.AddWithValue("@CompanyDescription", poco.CompanyDescription);
 
@@ -68,7 +68,7 @@ namespace CareerCloud.ADODataAccessLayer
                 position++;
             }
             _connection.Close();
-            return pocos;
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<CompanyDescriptionPoco> GetList(Expression<Func<CompanyDescriptionPoco, bool>> where, params Expression<Func<CompanyDescriptionPoco, object>>[] navigationProperties)

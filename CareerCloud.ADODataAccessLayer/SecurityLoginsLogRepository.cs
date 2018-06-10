@@ -41,7 +41,7 @@ namespace CareerCloud.ADODataAccessLayer
 
         public IList<SecurityLoginsLogPoco> GetAll(params Expression<Func<SecurityLoginsLogPoco, object>>[] navigationProperties)
         {
-            SecurityLoginsLogPoco[] pocos = new SecurityLoginsLogPoco[1000];
+            SecurityLoginsLogPoco[] pocos = new SecurityLoginsLogPoco[1723];
             SqlCommand cmd = new SqlCommand
             {
                 Connection = _connection,
@@ -68,7 +68,7 @@ namespace CareerCloud.ADODataAccessLayer
             }
             _connection.Close();
 
-            return pocos;
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<SecurityLoginsLogPoco> GetList(Expression<Func<SecurityLoginsLogPoco, bool>> where, params Expression<Func<SecurityLoginsLogPoco, object>>[] navigationProperties)
@@ -88,7 +88,7 @@ namespace CareerCloud.ADODataAccessLayer
             {
                 Connection = _connection
             };
-                int rowsEffected = 0;
+            int rowsEffected = 0;
             foreach (SecurityLoginsLogPoco poco in items)
             {
                 cmd.CommandText = @"DELETE FROM Security_Logins_Log WHERE Id = @Id";
@@ -113,7 +113,7 @@ namespace CareerCloud.ADODataAccessLayer
                                     SET Login = @Login, 
                                         Source_IP = @SourceIP, 
                                         Logon_Date = @LogonDate, 
-                                        Is_Succesful = @IsSuccessful 
+                                        Is_Succesful = @IsSuccesful 
                                     WHERE Id = @Id";
                 cmd.Parameters.AddWithValue("@Id", poco.Id);
                 cmd.Parameters.AddWithValue("@Login", poco.Login);

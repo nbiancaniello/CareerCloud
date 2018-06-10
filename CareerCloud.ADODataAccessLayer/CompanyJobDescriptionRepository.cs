@@ -40,7 +40,7 @@ namespace CareerCloud.ADODataAccessLayer
 
         public IList<CompanyJobDescriptionPoco> GetAll(params Expression<Func<CompanyJobDescriptionPoco, object>>[] navigationProperties)
         {
-            CompanyJobDescriptionPoco[] pocos = new CompanyJobDescriptionPoco[1000];
+            CompanyJobDescriptionPoco[] pocos = new CompanyJobDescriptionPoco[1001];
             SqlCommand cmd = new SqlCommand
             {
                 Connection = _connection,
@@ -66,7 +66,7 @@ namespace CareerCloud.ADODataAccessLayer
                 position++;
             }
             _connection.Close();
-            return pocos;
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<CompanyJobDescriptionPoco> GetList(Expression<Func<CompanyJobDescriptionPoco, bool>> where, params Expression<Func<CompanyJobDescriptionPoco, object>>[] navigationProperties)

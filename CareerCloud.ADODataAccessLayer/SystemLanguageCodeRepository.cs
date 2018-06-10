@@ -43,7 +43,7 @@ namespace CareerCloud.ADODataAccessLayer
             SqlCommand cmd = new SqlCommand
             {
                 Connection = _connection,
-                CommandText = "SELECT * FROM System_Country_Codes"
+                CommandText = "SELECT * FROM System_Language_Codes"
             };
 
             _connection.Open();
@@ -63,7 +63,7 @@ namespace CareerCloud.ADODataAccessLayer
                 position++;
             }
             _connection.Close();
-            return pocos;
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<SystemLanguageCodePoco> GetList(Expression<Func<SystemLanguageCodePoco, bool>> where, params Expression<Func<SystemLanguageCodePoco, object>>[] navigationProperties)
@@ -105,7 +105,7 @@ namespace CareerCloud.ADODataAccessLayer
             int rowsEffected = 0;
             foreach (SystemLanguageCodePoco poco in items)
             {
-                cmd.CommandText = @"UPDATE System_Country_Codes
+                cmd.CommandText = @"UPDATE System_Language_Codes
                                     SET Name = @Name,
                                         Native_Name = @NativeName
                                     WHERE LanguageID = @LanguageID";

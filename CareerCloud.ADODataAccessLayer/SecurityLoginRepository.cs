@@ -20,7 +20,7 @@ namespace CareerCloud.ADODataAccessLayer
             int rowsEffected = 0;
             foreach (SecurityLoginPoco poco in items)
             {
-                cmd.CommandText = @"INSERT INTO Security_Logins (Id, Login, Password, Created_Date, Password_Update_Date, Agreement_Accepted_Date, Is_Locked, Is_Inactive, Email_Address, Phone_Number, Full_Name, Force_Change, Prefferred_Language) 
+                cmd.CommandText = @"INSERT INTO Security_Logins (Id, Login, Password, Created_Date, Password_Update_Date, Agreement_Accepted_Date, Is_Locked, Is_Inactive, Email_Address, Phone_Number, Full_Name, Force_Change_Password, Prefferred_Language) 
                                 VALUES (@Id, @Login, @Password, @Created, @PasswordUpdate, @AgreementAccepted, @IsLocked, @IsInactive, @EmailAddress, @PhoneNumber, @FullName, @ForceChangePassword, @PrefferredLanguage)";
                 cmd.Parameters.AddWithValue("@Id", poco.Id);
                 cmd.Parameters.AddWithValue("@Login", poco.Login);
@@ -73,10 +73,10 @@ namespace CareerCloud.ADODataAccessLayer
                     IsLocked = reader.GetBoolean(6),
                     IsInactive = reader.GetBoolean(7),
                     EmailAddress = reader.GetString(8),
-                    PhoneNumber = reader.GetString(9),
+                    PhoneNumber = (reader.IsDBNull(9) ? null : reader.GetString(9)),
                     FullName = reader.GetString(10),
                     ForceChangePassword = reader.GetBoolean(11),
-                    PrefferredLanguage = reader.GetString(12),
+                    PrefferredLanguage = (reader.IsDBNull(12) ? null : reader.GetString(12)),
                     TimeStamp = (byte[])reader[13]
                 };
 
@@ -84,7 +84,7 @@ namespace CareerCloud.ADODataAccessLayer
                 position++;
             }
             _connection.Close();
-            return pocos;
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<SecurityLoginPoco> GetList(Expression<Func<SecurityLoginPoco, bool>> where, params Expression<Func<SecurityLoginPoco, object>>[] navigationProperties)
@@ -136,8 +136,8 @@ namespace CareerCloud.ADODataAccessLayer
                                     Email_Address = @EmailAddress, 
                                     Phone_Number = @PhoneNumber, 
                                     Full_Name = @FullName, 
-                                    Force_Change = @ForceChangePassword, 
-                                    Prefferred_Language 
+                                    Force_Change_Password = @ForceChangePassword, 
+                                    Prefferred_Language = @PrefferredLanguage
                                     WHERE Id = @Id";
                 cmd.Parameters.AddWithValue("@Id", poco.Id);
                 cmd.Parameters.AddWithValue("@Login", poco.Login);

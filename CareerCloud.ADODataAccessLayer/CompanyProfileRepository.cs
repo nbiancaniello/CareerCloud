@@ -59,10 +59,10 @@ namespace CareerCloud.ADODataAccessLayer
                 {
                     Id = reader.GetGuid(0),
                     RegistrationDate = reader.GetDateTime(1),
-                    CompanyWebsite = reader.GetString(2),
+                    CompanyWebsite = (reader.IsDBNull(2) ? null : reader.GetString(2)),
                     ContactPhone= reader.GetString(3),
-                    ContactName = reader.GetString(4),
-                    CompanyLogo = (byte[])reader[5],
+                    ContactName = (reader.IsDBNull(4) ? null : reader.GetString(4)),
+                    CompanyLogo = (reader.IsDBNull(5) ? null : (byte[])reader[5]),
                     TimeStamp = (byte[])reader[6]
                 };
 
@@ -70,7 +70,7 @@ namespace CareerCloud.ADODataAccessLayer
                 position++;
             }
             _connection.Close();
-            return pocos;
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<CompanyProfilePoco> GetList(Expression<Func<CompanyProfilePoco, bool>> where, params Expression<Func<CompanyProfilePoco, object>>[] navigationProperties)
@@ -116,7 +116,7 @@ namespace CareerCloud.ADODataAccessLayer
 	                                    Company_Website = @CompanyWebsite, 
 	                                    Contact_Phone = @ContactPhone, 
 	                                    Contact_Name = @ContactName, 
-	                                    Company_Logo= @CompanyLogo
+	                                    Company_Logo = @CompanyLogo
                                     WHERE Id = @Id";
                 cmd.Parameters.AddWithValue("@Id", poco.Id);
                 cmd.Parameters.AddWithValue("@RegistrationDate", poco.RegistrationDate);

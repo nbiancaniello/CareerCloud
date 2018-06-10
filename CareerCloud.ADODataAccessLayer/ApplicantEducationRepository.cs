@@ -72,7 +72,7 @@ namespace CareerCloud.ADODataAccessLayer
                 position++;
             }
             _connection.Close();
-            return pocos;
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<ApplicantEducationPoco> GetList(Expression<Func<ApplicantEducationPoco, bool>> where, params Expression<Func<ApplicantEducationPoco, object>>[] navigationProperties)
@@ -83,13 +83,7 @@ namespace CareerCloud.ADODataAccessLayer
         public ApplicantEducationPoco GetSingle(Expression<Func<ApplicantEducationPoco, bool>> where, params Expression<Func<ApplicantEducationPoco, object>>[] navigationProperties)
         {
             IQueryable<ApplicantEducationPoco> pocos = GetAll().AsQueryable();
-            try
-            {
-                return pocos.Where(where).FirstOrDefault();
-            } catch (NullReferenceException NRe)
-            {
-                return pocos.FirstOrDefault();
-            }            
+            return pocos.Where(where).FirstOrDefault();
         }
 
         public void Remove(params ApplicantEducationPoco[] items)

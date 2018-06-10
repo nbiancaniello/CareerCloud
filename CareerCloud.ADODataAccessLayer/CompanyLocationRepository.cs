@@ -63,8 +63,8 @@ namespace CareerCloud.ADODataAccessLayer
                     CountryCode = reader.GetString(2),
                     Province = reader.GetString(3),
                     Street = reader.GetString(4),
-                    City = reader.GetString(5),
-                    PostalCode = reader.GetString(6),
+                    City = (reader.IsDBNull(5) ? null : reader.GetString(5)),
+                    PostalCode = (reader.IsDBNull(6) ? null : reader.GetString(6)),
                     TimeStamp = (byte[])reader[7]
                 };
 
@@ -72,7 +72,7 @@ namespace CareerCloud.ADODataAccessLayer
                 position++;
             }
             _connection.Close();
-            return pocos;
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<CompanyLocationPoco> GetList(Expression<Func<CompanyLocationPoco, bool>> where, params Expression<Func<CompanyLocationPoco, object>>[] navigationProperties)

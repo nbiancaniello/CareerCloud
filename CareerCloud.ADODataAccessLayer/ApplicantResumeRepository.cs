@@ -46,6 +46,7 @@ namespace CareerCloud.ADODataAccessLayer
                 CommandText = "SELECT * FROM Applicant_Resumes"
             };
             int position = 0;
+            _connection.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -59,7 +60,8 @@ namespace CareerCloud.ADODataAccessLayer
                 pocos[position] = poco;
                 position++;
             }
-            return pocos;
+            _connection.Close();
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<ApplicantResumePoco> GetList(System.Linq.Expressions.Expression<Func<ApplicantResumePoco, bool>> where, params System.Linq.Expressions.Expression<Func<ApplicantResumePoco, object>>[] navigationProperties)

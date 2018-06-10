@@ -40,7 +40,7 @@ namespace CareerCloud.ADODataAccessLayer
 
         public IList<CompanyJobEducationPoco> GetAll(params Expression<Func<CompanyJobEducationPoco, object>>[] navigationProperties)
         {
-            CompanyJobEducationPoco[] pocos = new CompanyJobEducationPoco[1000];
+            CompanyJobEducationPoco[] pocos = new CompanyJobEducationPoco[1001];
             SqlCommand cmd = new SqlCommand
             {
                 Connection = _connection,
@@ -66,7 +66,7 @@ namespace CareerCloud.ADODataAccessLayer
                 position++;
             }
             _connection.Close();
-            return pocos;
+            return pocos.Where(p => p != null).ToList();
         }
 
         public IList<CompanyJobEducationPoco> GetList(Expression<Func<CompanyJobEducationPoco, bool>> where, params Expression<Func<CompanyJobEducationPoco, object>>[] navigationProperties)
@@ -110,10 +110,10 @@ namespace CareerCloud.ADODataAccessLayer
                 cmd.CommandText = @"UPDATE Company_Job_Educations 
                                     SET Job = @Job, 
 	                                    Major = @Major, 
-	                                    Importance = @Importance, 
+	                                    Importance = @Importance
 	                                WHERE Id = @Id";
                 cmd.Parameters.AddWithValue("@Id", poco.Id);
-                cmd.Parameters.AddWithValue("@Applicant", poco.Job);
+                cmd.Parameters.AddWithValue("@Job", poco.Job);
                 cmd.Parameters.AddWithValue("@Major", poco.Major);
                 cmd.Parameters.AddWithValue("@Importance", poco.Importance);
                     
