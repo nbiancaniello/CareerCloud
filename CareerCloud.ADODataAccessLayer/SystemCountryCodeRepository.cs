@@ -13,21 +13,24 @@ namespace CareerCloud.ADODataAccessLayer
     {
         public void Add(params SystemCountryCodePoco[] items)
         {
-            SqlCommand cmd = new SqlCommand()
+            using (SqlConnection _connection = new SqlConnection(_conn))
             {
-                Connection = _connection
-            };
+                SqlCommand cmd = new SqlCommand()
+                {
+                    Connection = _connection
+                };
                 int rowsEffected = 0;
-            foreach (SystemCountryCodePoco poco in items)
-            {
-                cmd.CommandText = @"INSERT INTO System_Country_Codes (Code, Name) 
+                foreach (SystemCountryCodePoco poco in items)
+                {
+                    cmd.CommandText = @"INSERT INTO System_Country_Codes (Code, Name) 
                                 VALUES (@Code, @Name)";
-                cmd.Parameters.AddWithValue("@Code", poco.Code);
-                cmd.Parameters.AddWithValue("@Name", poco.Name);
+                    cmd.Parameters.AddWithValue("@Code", poco.Code);
+                    cmd.Parameters.AddWithValue("@Name", poco.Name);
 
-                _connection.Open();
-                rowsEffected = cmd.ExecuteNonQuery();
-                _connection.Close();
+                    _connection.Open();
+                    rowsEffected = cmd.ExecuteNonQuery();
+                    _connection.Close();
+                }
             }
         }
 
@@ -39,28 +42,31 @@ namespace CareerCloud.ADODataAccessLayer
         public IList<SystemCountryCodePoco> GetAll(params Expression<Func<SystemCountryCodePoco, object>>[] navigationProperties)
         {
             SystemCountryCodePoco[] pocos = new SystemCountryCodePoco[1000];
-            SqlCommand cmd = new SqlCommand
+            using (SqlConnection _connection = new SqlConnection(_conn))
             {
-                Connection = _connection,
-                CommandText = "SELECT * FROM System_Country_Codes"
-            };
-
-            _connection.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            int position = 0;
-            while (reader.Read())
-            {
-                SystemCountryCodePoco poco = new SystemCountryCodePoco
+                SqlCommand cmd = new SqlCommand
                 {
-                    Code = reader.GetString(0),
-                    Name = reader.GetString(1)
+                    Connection = _connection,
+                    CommandText = "SELECT * FROM System_Country_Codes"
                 };
 
-                pocos[position] = poco;
-                position++;
+                _connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                int position = 0;
+                while (reader.Read())
+                {
+                    SystemCountryCodePoco poco = new SystemCountryCodePoco
+                    {
+                        Code = reader.GetString(0),
+                        Name = reader.GetString(1)
+                    };
+
+                    pocos[position] = poco;
+                    position++;
+                }
+                _connection.Close();
             }
-            _connection.Close();
             return pocos.Where(p => p != null).ToList();
         }
 
@@ -77,40 +83,46 @@ namespace CareerCloud.ADODataAccessLayer
 
         public void Remove(params SystemCountryCodePoco[] items)
         {
-            SqlCommand cmd = new SqlCommand()
+            using (SqlConnection _connection = new SqlConnection(_conn))
             {
-                Connection = _connection
-            };
-            int rowsEffected = 0;
-            foreach (SystemCountryCodePoco poco in items)
-            {
-                cmd.CommandText = @"DELETE FROM System_Country_Codes WHERE Code = @Code";
-                cmd.Parameters.AddWithValue("@Code", poco.Code);
+                SqlCommand cmd = new SqlCommand()
+                {
+                    Connection = _connection
+                };
+                int rowsEffected = 0;
+                foreach (SystemCountryCodePoco poco in items)
+                {
+                    cmd.CommandText = @"DELETE FROM System_Country_Codes WHERE Code = @Code";
+                    cmd.Parameters.AddWithValue("@Code", poco.Code);
 
-                _connection.Open();
-                rowsEffected = cmd.ExecuteNonQuery();
-                _connection.Close();
+                    _connection.Open();
+                    rowsEffected = cmd.ExecuteNonQuery();
+                    _connection.Close();
+                }
             }
         }
 
         public void Update(params SystemCountryCodePoco[] items)
         {
-            SqlCommand cmd = new SqlCommand()
+            using (SqlConnection _connection = new SqlConnection(_conn))
             {
-                Connection = _connection
-            };
+                SqlCommand cmd = new SqlCommand()
+                {
+                    Connection = _connection
+                };
                 int rowsEffected = 0;
-            foreach (SystemCountryCodePoco poco in items)
-            {
-                cmd.CommandText = @"UPDATE System_Country_Codes
+                foreach (SystemCountryCodePoco poco in items)
+                {
+                    cmd.CommandText = @"UPDATE System_Country_Codes
                                     SET Name = @Name
                                     WHERE Code = @Code";
-                cmd.Parameters.AddWithValue("@Code", poco.Code);
-                cmd.Parameters.AddWithValue("@Name", poco.Name);
+                    cmd.Parameters.AddWithValue("@Code", poco.Code);
+                    cmd.Parameters.AddWithValue("@Name", poco.Name);
 
-                _connection.Open();
-                rowsEffected = cmd.ExecuteNonQuery();
-                _connection.Close();
+                    _connection.Open();
+                    rowsEffected = cmd.ExecuteNonQuery();
+                    _connection.Close();
+                }
             }
         }
     }
