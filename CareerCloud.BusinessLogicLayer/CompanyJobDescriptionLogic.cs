@@ -8,11 +8,23 @@ using System.Threading.Tasks;
 
 namespace CareerCloud.BusinessLogicLayer
 {
-    class CompanyJobDescriptionLogic : BaseLogic<CompanyJobDescriptionPoco>
+    public class CompanyJobDescriptionLogic : BaseLogic<CompanyJobDescriptionPoco>
     {
         public CompanyJobDescriptionLogic(IDataRepository<CompanyJobDescriptionPoco> repository) : base(repository)
         {
 
+        }
+
+        public override void Add(CompanyJobDescriptionPoco[] pocos)
+        {
+            Verify(pocos);
+            base.Add(pocos);
+        }
+
+        public override void Update(CompanyJobDescriptionPoco[] pocos)
+        {
+            Verify(pocos);
+            base.Update(pocos);
         }
 
         protected override void Verify(CompanyJobDescriptionPoco[] pocos)
@@ -21,12 +33,12 @@ namespace CareerCloud.BusinessLogicLayer
 
             foreach(CompanyJobDescriptionPoco poco in pocos)
             {
-                if (string.IsNullOrEmpty(poco.JobName.Trim()))
+                if (string.IsNullOrEmpty(poco.JobName))
                 {
                     exceptions.Add(new ValidationException(300,
                         $"Job Name cannot be empty - {poco.Id}"));
                 }
-                if (string.IsNullOrEmpty(poco.JobDescriptions.Trim()))
+                if (string.IsNullOrEmpty(poco.JobDescriptions))
                 {
                     exceptions.Add(new ValidationException(301,
                         $"Job Descriptions cannot be empty - {poco.Id}"));

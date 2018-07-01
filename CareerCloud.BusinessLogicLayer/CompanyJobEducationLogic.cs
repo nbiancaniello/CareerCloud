@@ -8,11 +8,23 @@ using System.Threading.Tasks;
 
 namespace CareerCloud.BusinessLogicLayer
 {
-    class CompanyJobEducationLogic : BaseLogic<CompanyJobEducationPoco>
+    public class CompanyJobEducationLogic : BaseLogic<CompanyJobEducationPoco>
     {
         public CompanyJobEducationLogic(IDataRepository<CompanyJobEducationPoco> repository) : base(repository)
         {
 
+        }
+
+        public override void Add(CompanyJobEducationPoco[] pocos)
+        {
+            Verify(pocos);
+            base.Add(pocos);
+        }
+
+        public override void Update(CompanyJobEducationPoco[] pocos)
+        {
+            Verify(pocos);
+            base.Update(pocos);
         }
 
         protected override void Verify(CompanyJobEducationPoco[] pocos)
@@ -21,7 +33,12 @@ namespace CareerCloud.BusinessLogicLayer
 
             foreach(CompanyJobEducationPoco poco in pocos)
             {
-                if(poco.Major.Length < 2)
+                if (string.IsNullOrEmpty(poco.Major))
+                {
+                    exceptions.Add(new ValidationException(107,
+                        $"Major cannot be empty - {poco.Id}"));
+                }
+                else if (poco.Major.Length < 2)
                 {
                     exceptions.Add(new ValidationException(200,
                         $"Major must be at least 2 characters - {poco.Id}"));

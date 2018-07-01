@@ -8,11 +8,23 @@ using System.Threading.Tasks;
 
 namespace CareerCloud.BusinessLogicLayer
 {
-    class SecurityRoleLogic : BaseLogic<SecurityRolePoco>
+    public class SecurityRoleLogic : BaseLogic<SecurityRolePoco>
     {
         public SecurityRoleLogic(IDataRepository<SecurityRolePoco> repository) : base(repository)
         {
 
+        }
+
+        public override void Add(SecurityRolePoco[] pocos)
+        {
+            Verify(pocos);
+            base.Add(pocos);
+        }
+
+        public override void Update(SecurityRolePoco[] pocos)
+        {
+            Verify(pocos);
+            base.Update(pocos);
         }
 
         protected override void Verify(SecurityRolePoco[] pocos)
@@ -20,7 +32,7 @@ namespace CareerCloud.BusinessLogicLayer
             List<ValidationException> exceptions = new List<ValidationException>();
             foreach (SecurityRolePoco poco in pocos)
             {
-                if (string.IsNullOrEmpty(poco.Role.Trim()))
+                if (string.IsNullOrEmpty(poco.Role))
                 {
                     exceptions.Add(new ValidationException(800,
                         $"Role cannot be empty - {poco.Id}"));

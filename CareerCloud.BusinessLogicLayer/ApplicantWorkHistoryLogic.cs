@@ -8,11 +8,23 @@ using System.Threading.Tasks;
 
 namespace CareerCloud.BusinessLogicLayer
 {
-    class ApplicantWorkHistoryLogic : BaseLogic<ApplicantWorkHistoryPoco>
+    public class ApplicantWorkHistoryLogic : BaseLogic<ApplicantWorkHistoryPoco>
     {
         public ApplicantWorkHistoryLogic(IDataRepository<ApplicantWorkHistoryPoco> repository) : base(repository)
         {
 
+        }
+
+        public override void Add(ApplicantWorkHistoryPoco[] pocos)
+        {
+            Verify(pocos);
+            base.Add(pocos);
+        }
+
+        public override void Update(ApplicantWorkHistoryPoco[] pocos)
+        {
+            Verify(pocos);
+            base.Update(pocos);
         }
 
         protected override void Verify(ApplicantWorkHistoryPoco[] pocos)
@@ -20,9 +32,9 @@ namespace CareerCloud.BusinessLogicLayer
             List<ValidationException> exceptions = new List<ValidationException>();
             foreach(ApplicantWorkHistoryPoco poco in pocos)
             {
-                if(poco.CompanyName.Length < 3)
+                if(poco.CompanyName.Length <= 2)
                 {
-                    exceptions.Add(new ValidationException(107,
+                    exceptions.Add(new ValidationException(105,
                         $"Company Name must be greater than 2 characters - {poco.Id}"));
                 }
             }

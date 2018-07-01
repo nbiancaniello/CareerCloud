@@ -8,11 +8,23 @@ using System.Threading.Tasks;
 
 namespace CareerCloud.BusinessLogicLayer
 {
-    class CompanyLocationLogic : BaseLogic<CompanyLocationPoco>
+    public class CompanyLocationLogic : BaseLogic<CompanyLocationPoco>
     {
         public CompanyLocationLogic(IDataRepository<CompanyLocationPoco> repository) : base(repository)
         {
 
+        }
+
+        public override void Add(CompanyLocationPoco[] pocos)
+        {
+            Verify(pocos);
+            base.Add(pocos);
+        }
+
+        public override void Update(CompanyLocationPoco[] pocos)
+        {
+            Verify(pocos);
+            base.Update(pocos);
         }
 
         protected override void Verify(CompanyLocationPoco[] pocos)
@@ -20,27 +32,27 @@ namespace CareerCloud.BusinessLogicLayer
             List<ValidationException> exceptions = new List<ValidationException>();
             foreach(CompanyLocationPoco poco in pocos)
             {
-                if (string.IsNullOrEmpty(poco.CountryCode.Trim()))
+                if (string.IsNullOrEmpty(poco.CountryCode))
                 {
                     exceptions.Add(new ValidationException(500,
                         $"Country Code cannot be empty"));
                 }
-                if (string.IsNullOrEmpty(poco.Province.Trim()))
+                if (string.IsNullOrEmpty(poco.Province))
                 {
                     exceptions.Add(new ValidationException(501,
                         $"Province cannot be empty"));
                 }
-                if (string.IsNullOrEmpty(poco.Street.Trim()))
+                if (string.IsNullOrEmpty(poco.Street))
                 {
                     exceptions.Add(new ValidationException(502,
                         $"Street cannot be empty"));
                 }
-                if (string.IsNullOrEmpty(poco.City.Trim()))
+                if (string.IsNullOrEmpty(poco.City))
                 {
                     exceptions.Add(new ValidationException(503,
                         $"City cannot be empty"));
                 }
-                if (string.IsNullOrEmpty(poco.PostalCode.Trim()))
+                if (string.IsNullOrEmpty(poco.PostalCode))
                 {
                     exceptions.Add(new ValidationException(504,
                         $"Postal Code cannot be empty"));
