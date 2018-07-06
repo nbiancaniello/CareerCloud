@@ -97,16 +97,16 @@ public class SecurityLoginLogic : BaseLogic<SecurityLoginPoco>
 
             if (string.IsNullOrEmpty(poco.EmailAddress))
             {
-                exceptions.Add(new ValidationException(704, "EmailAddress for SecurityLogin {poco.Id} is not a valid email address format."));
+                exceptions.Add(new ValidationException(704, $"EmailAddress for SecurityLogin {poco.Id} is not a valid email address format."));
             }
             else if (!Regex.IsMatch(poco.EmailAddress, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase))
             {
-                exceptions.Add(new ValidationException(704, "EmailAddress for SecurityLogin {poco.Id} is not a valid email address format."));
+                exceptions.Add(new ValidationException(704, $"EmailAddress for SecurityLogin {poco.Id} is not a valid email address format."));
             }
 
             if (string.IsNullOrEmpty(poco.FullName))
             {
-                exceptions.Add(new ValidationException(705, "FullName for SecurityLogin {poco.Id} is required."));
+                exceptions.Add(new ValidationException(705, $"FullName for SecurityLogin {poco.Id} is required."));
             }
 
         }

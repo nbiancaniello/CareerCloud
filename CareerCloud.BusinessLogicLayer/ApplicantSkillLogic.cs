@@ -36,22 +36,22 @@ namespace CareerCloud.BusinessLogicLayer
                 if(poco.StartMonth > 12)
                 {
                     exceptions.Add(new ValidationException(101,
-                        $"Start Month cannot be greater than 12 - {poco.Id}"));
+                        $"Start Month cannot be greater than 12. - {poco.Id}"));
                 }
                 if (poco.EndMonth > 12)
                 {
                     exceptions.Add(new ValidationException(102,
-                        $"End Month cannot be greater than 12 - {poco.Id}"));
+                        $"End Month cannot be greater than 12. - {poco.Id}"));
                 }
                 if (poco.StartYear < 1900)
                 {
                     exceptions.Add(new ValidationException(103,
-                        $"Start Year cannot be less then 1900 - {poco.Id}"));
+                        $"Start Year cannot be less then 1900. - {poco.Id}"));
                 }
                 if (poco.EndYear < poco.StartYear)
                 {
                     exceptions.Add(new ValidationException(104,
-                        $"End Year cannot be greater than Start Year - {poco.Id}"));
+                        $"End Year cannot be greater than Start Year. - {poco.Id}"));
                 }
             }
 

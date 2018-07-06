@@ -36,7 +36,7 @@ namespace CareerCloud.BusinessLogicLayer
                 if (poco.ApplicationDate > DateTime.Now)
                 {
                     exceptions.Add(new ValidationException(110,
-                        $"ApplicationDate cannot be greater than today - {poco.Id}"));
+                        $"Application Date cannot be greater than today. - {poco.Id}"));
                 }
 
                 if (exceptions.Count > 0)

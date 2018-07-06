@@ -32,10 +32,10 @@ namespace CareerCloud.BusinessLogicLayer
             List<ValidationException> exceptions = new List<ValidationException>();
             foreach(ApplicantWorkHistoryPoco poco in pocos)
             {
-                if(poco.CompanyName.Length <= 2)
+                if(poco.CompanyName.Length < 3)
                 {
                     exceptions.Add(new ValidationException(105,
-                        $"Company Name must be greater than 2 characters - {poco.Id}"));
+                        $"Company Name must be greater than 2 characters. - {poco.Id}"));
                 }
             }
 

@@ -36,22 +36,22 @@ namespace CareerCloud.BusinessLogicLayer
                 if (string.IsNullOrEmpty(poco.CompanyDescription))
                 {
                     exceptions.Add(new ValidationException(107,
-                        $"Company Description cannot be empty - {poco.Id}"));
+                        $"Company Description cannot be empty. - {poco.Id}"));
                 }
                 else if(poco.CompanyDescription.Length < 3)
                 {
                     exceptions.Add(new ValidationException(107,
-                        $"Company Description must be greater than 2 characters - {poco.Id}"));
+                        $"Company Description must be greater than 2 characters. - {poco.Id}"));
                 }
                 if (string.IsNullOrEmpty(poco.CompanyName))
                 {
                     exceptions.Add(new ValidationException(107,
-                        $"Company Name cannot be empty - {poco.Id}"));
+                        $"Company Name cannot be empty. - {poco.Id}"));
                 }
                 else if(poco.CompanyName.Length < 3)
                 {
                     exceptions.Add(new ValidationException(106,
-                        $"Company Name must be greater than 2 characters - {poco.Id}"));
+                        $"Company Name must be greater than 2 characters. - {poco.Id}"));
                 }
             }
 

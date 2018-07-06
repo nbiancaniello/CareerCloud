@@ -2,9 +2,6 @@
 using CareerCloud.Pocos;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CareerCloud.BusinessLogicLayer
 {
@@ -36,22 +33,22 @@ namespace CareerCloud.BusinessLogicLayer
                 if (string.IsNullOrEmpty(poco.Major))
                 {
                     exceptions.Add(new ValidationException(107,
-                        $"Major cannot be empty - {poco.Id}"));
+                        $"Major cannot be empty. - {poco.Id}"));
                 }
                 else if (poco.Major.Length < 3)
                 {
                     exceptions.Add(new ValidationException(107, 
-                        $"Major cannot be less than 3 characters - {poco.Id}"));
+                        $"Major cannot be less than 3 characters. - {poco.Id}"));
                 }
                 if (poco.StartDate > DateTime.Now)
                 {
                     exceptions.Add(new ValidationException(108,
-                        $"Cannot be greater than today - {poco.Id}"));
+                        $"Start Date cannot be greater than today. - {poco.Id}"));
                 }
                 if (poco.CompletionDate < poco.StartDate)
                 {
                     exceptions.Add(new ValidationException(109,
-                        $"CompletionDate cannot be earlier than StartDate - {poco.Id}"));
+                        $"Completion Date cannot be earlier than Start Date. - {poco.Id}"));
                 }
 
                 if (exceptions.Count > 0)

@@ -36,7 +36,7 @@ namespace CareerCloud.BusinessLogicLayer
                 if (string.IsNullOrEmpty(poco.Resume))
                 {
                     exceptions.Add(new ValidationException(113,
-                        $"Resume cannot be empty - {poco.Id}"));
+                        $"Resume cannot be empty. - {poco.Id}"));
                 }
             }
 

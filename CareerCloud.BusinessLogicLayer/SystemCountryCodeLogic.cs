@@ -33,12 +33,12 @@ namespace CareerCloud.BusinessLogicLayer
                 if (string.IsNullOrEmpty(poco.Code))
                 {
                     exceptions.Add(new ValidationException(900, 
-                        $"Code cannot be empty"));
+                        $"Code cannot be empty."));
                 }
                 if (string.IsNullOrEmpty(poco.Name))
                 {
                     exceptions.Add(new ValidationException(901,
-                        $"Name cannot be empty"));
+                        $"Name cannot be empty."));
                 }
             }
 

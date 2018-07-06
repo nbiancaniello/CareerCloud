@@ -36,12 +36,12 @@ namespace CareerCloud.BusinessLogicLayer
                 if (string.IsNullOrEmpty(poco.JobName))
                 {
                     exceptions.Add(new ValidationException(300,
-                        $"Job Name cannot be empty - {poco.Id}"));
+                        $"Job Name cannot be empty. - {poco.Id}"));
                 }
                 if (string.IsNullOrEmpty(poco.JobDescriptions))
                 {
                     exceptions.Add(new ValidationException(301,
-                        $"Job Descriptions cannot be empty - {poco.Id}"));
+                        $"Job Descriptions cannot be empty. - {poco.Id}"));
                 }
             }
 

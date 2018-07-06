@@ -36,17 +36,17 @@ namespace CareerCloud.BusinessLogicLayer
                 if (string.IsNullOrEmpty(poco.Major))
                 {
                     exceptions.Add(new ValidationException(107,
-                        $"Major cannot be empty - {poco.Id}"));
+                        $"Major cannot be empty. - {poco.Id}"));
                 }
                 else if (poco.Major.Length < 2)
                 {
                     exceptions.Add(new ValidationException(200,
-                        $"Major must be at least 2 characters - {poco.Id}"));
+                        $"Major must be at least 2 characters. - {poco.Id}"));
                 }
                 if (poco.Importance < 0)
                 {
                     exceptions.Add(new ValidationException(201,
-                        $"Importance cannot be less than 0 - {poco.Id}"));
+                        $"Importance cannot be less than 0. - {poco.Id}"));
                 }
             }
 
