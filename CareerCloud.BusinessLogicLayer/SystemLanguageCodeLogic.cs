@@ -10,19 +10,22 @@ namespace CareerCloud.BusinessLogicLayer
 {
     public class SystemLanguageCodeLogic
     {
+        protected IDataRepository<SystemLanguageCodePoco> _repository;
         public SystemLanguageCodeLogic(IDataRepository<SystemLanguageCodePoco> repository)
         {
-
+            _repository = repository;
         }
 
         public void Add(SystemLanguageCodePoco[] pocos)
         {
             Verify(pocos);
+            _repository.Add();
         }
 
         public void Update(SystemLanguageCodePoco[] pocos)
         {
             Verify(pocos);
+            _repository.Update();
         }
         protected void Verify(SystemLanguageCodePoco[] pocos)
         {
@@ -51,5 +54,6 @@ namespace CareerCloud.BusinessLogicLayer
                 throw new AggregateException(exceptions);
             }
         }
+
     }
 }

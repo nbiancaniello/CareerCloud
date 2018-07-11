@@ -14,5 +14,15 @@ namespace CareerCloud.BusinessLogicLayer
         {
 
         }
+
+        public override void Add(CompanyJobPoco[] pocos)
+        {
+            base.Add(pocos);
+        }
+
+        public override void Update(CompanyJobPoco[] pocos)
+        {
+            base.Update(pocos);
+        }
     }
 }
