@@ -16,6 +16,18 @@ namespace CareerCloud.BusinessLogicLayer
             _repository = repository;
         }
 
+        public SystemLanguageCodePoco GetSingle()
+        {
+            IQueryable<SystemLanguageCodePoco> pocos = GetAll().AsQueryable();
+            return pocos.FirstOrDefault();
+        }
+
+        public IList<SystemLanguageCodePoco> GetAll()
+        {
+            IList<SystemLanguageCodePoco> pocos = _repository.GetAll();
+            return pocos.ToList();
+        }
+
         public void Add(SystemLanguageCodePoco[] pocos)
         {
             Verify(pocos);

@@ -44,5 +44,15 @@ namespace CareerCloud.BusinessLogicLayer
                 throw new AggregateException(exceptions);
             }
         }
+
+        public override ApplicantWorkHistoryPoco Get(Guid id)
+        {
+            return base.Get(id);
+        }
+
+        public override List<ApplicantWorkHistoryPoco> GetAll()
+        {
+            return base.GetAll();
+        }
     }
 }

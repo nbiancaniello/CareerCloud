@@ -24,5 +24,15 @@ namespace CareerCloud.BusinessLogicLayer
         {
             base.Update(pocos);
         }
+
+        public override CompanyJobPoco Get(Guid id)
+        {
+            return base.Get(id);
+        }
+
+        public override List<CompanyJobPoco> GetAll()
+        {
+            return base.GetAll();
+        }
     }
 }

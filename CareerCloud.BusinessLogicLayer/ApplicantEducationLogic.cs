@@ -57,5 +57,15 @@ namespace CareerCloud.BusinessLogicLayer
                 }
             }
         }
+
+        public override ApplicantEducationPoco Get(Guid id)
+        {
+            return base.Get(id);
+        }
+
+        public override List<ApplicantEducationPoco> GetAll()
+        {
+            return base.GetAll();
+        }
     }
 }

@@ -60,5 +60,15 @@ namespace CareerCloud.BusinessLogicLayer
                 throw new AggregateException(exceptions);
             }
         }
+
+        public override ApplicantSkillPoco Get(Guid id)
+        {
+            return base.Get(id);
+        }
+
+        public override List<ApplicantSkillPoco> GetAll()
+        {
+            return base.GetAll();
+        }
     }
 }
