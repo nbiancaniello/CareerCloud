@@ -16,5 +16,6 @@ namespace CareerCloud.Pocos
         public String JobDescriptions { get; set; }
         [Column("Time_Stamp")]
         public byte[] TimeStamp { get; set; }
+        public virtual CompanyJobPoco CompanyJob { get; set; }
     }
 }

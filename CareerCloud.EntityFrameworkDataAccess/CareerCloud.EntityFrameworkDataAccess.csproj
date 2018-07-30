@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E67B916A-313C-4394-8DF6-88478875A5C5}</ProjectGuid>
+    <ProjectGuid>{455EEEAA-FB97-481F-AF1D-AFEDDE207A2C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CareerCloud.Pocos</RootNamespace>
-    <AssemblyName>CareerCloud.Pocos</AssemblyName>
+    <RootNamespace>CareerCloud.EntityFrameworkDataAccess</RootNamespace>
+    <AssemblyName>CareerCloud.EntityFrameworkDataAccess</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,31 +48,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicantEducationPoco.cs" />
-    <Compile Include="ApplicantJobApplicationPoco.cs" />
-    <Compile Include="ApplicantProfilePoco.cs" />
-    <Compile Include="ApplicantResumePoco.cs" />
-    <Compile Include="ApplicantSkillPoco.cs" />
-    <Compile Include="ApplicantWorkHistoryPoco.cs" />
-    <Compile Include="CompanyDescriptionPoco.cs" />
-    <Compile Include="CompanyJobDescriptionPoco.cs" />
-    <Compile Include="CompanyJobEducationPoco.cs" />
-    <Compile Include="CompanyJobPoco.cs" />
-    <Compile Include="CompanyJobSkillPoco.cs" />
-    <Compile Include="CompanyLocationPoco.cs" />
-    <Compile Include="CompanyProfilePoco.cs" />
-    <Compile Include="IPoco.cs" />
+    <Compile Include="CareerCloudContext.cs" />
+    <Compile Include="EFGenericRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SecurityLoginsLogPoco.cs" />
-    <Compile Include="SecurityLoginPoco.cs" />
-    <Compile Include="SecurityLoginsRolePoco.cs" />
-    <Compile Include="SecurityRolePoco.cs" />
-    <Compile Include="SystemCountryCodePoco.cs" />
-    <Compile Include="SystemLanguageCodePoco.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CareerCloud.DataAccessLayer\CareerCloud.DataAccessLayer.csproj">
+      <Project>{7b6cc59d-6137-45f9-a3e2-06760c20ed59}</Project>
+      <Name>CareerCloud.DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CareerCloud.Pocos\CareerCloud.Pocos.csproj">
+      <Project>{e67b916a-313c-4394-8df6-88478875a5c5}</Project>
+      <Name>CareerCloud.Pocos</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
