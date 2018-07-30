@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CareerCloud.EntityFrameworkDataAccess
 {
-    class EFGenericRepository<T> : IDataRepository<T> where T : class
+    public class EFGenericRepository<T> : IDataRepository<T> where T : class
     {
         private CareerCloudContext _context;
 
@@ -44,9 +44,15 @@ namespace CareerCloud.EntityFrameworkDataAccess
 
         public IList<T> GetList(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] navigationProperties)
         {
-            throw new NotImplementedException();
+            IQueryable<T> dbQuery = _context.Set<T>();
+            foreach (Expression<Func<T,object>> navProp in navigationProperties)
+            {
+                dbQuery = dbQuery.Include<T, object>(navProp);
+            }
+            return dbQuery.Where(where).ToList();
         }
 
+        //ToDo: Continue watchnig Video...
         public T GetSingle(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] navigationProperties)
         {
             IQueryable<T> dbQuery = _context.Set<T>();
@@ -55,7 +61,7 @@ namespace CareerCloud.EntityFrameworkDataAccess
                 dbQuery = dbQuery.Include<T, object>(navProp);
             }
 
-            return dbQuery.ToList();
+            return dbQuery.FirstOrDefault(where);
         }
 
         public void Remove(params T[] items)
