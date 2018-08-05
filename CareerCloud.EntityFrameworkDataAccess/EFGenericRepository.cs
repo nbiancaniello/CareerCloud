@@ -52,7 +52,6 @@ namespace CareerCloud.EntityFrameworkDataAccess
             return dbQuery.Where(where).ToList();
         }
 
-        //ToDo: Continue watchnig Video...
         public T GetSingle(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] navigationProperties)
         {
             IQueryable<T> dbQuery = _context.Set<T>();
