@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CareerCloud.EntityFrameworkDataAccess
 {
@@ -13,9 +11,9 @@ namespace CareerCloud.EntityFrameworkDataAccess
     {
         private CareerCloudContext _context;
 
-        public EFGenericRepository()
+        public EFGenericRepository(bool createProxy = true)
         {
-            _context = new CareerCloudContext();
+            _context = new CareerCloudContext(createProxy);
         }
         public void Add(params T[] items)
         {

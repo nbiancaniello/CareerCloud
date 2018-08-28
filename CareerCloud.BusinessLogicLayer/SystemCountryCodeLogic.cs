@@ -3,8 +3,6 @@ using CareerCloud.Pocos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CareerCloud.BusinessLogicLayer
 {
@@ -16,13 +14,13 @@ namespace CareerCloud.BusinessLogicLayer
             _repository = repository;
         }
 
-        public SystemCountryCodePoco GetSingle()
+        public SystemCountryCodePoco Get(string id)
         {
-            IQueryable<SystemCountryCodePoco> pocos = GetAll().AsQueryable();
-            return pocos.FirstOrDefault();
+            IQueryable<SystemCountryCodePoco> pocos = _repository.GetAll().AsQueryable();
+            return pocos.FirstOrDefault(t => t.Code == id);
         }
 
-        public IList<SystemCountryCodePoco> GetAll()
+        public List<SystemCountryCodePoco> GetAll()
         {
             IList<SystemCountryCodePoco> pocos = _repository.GetAll();
             return pocos.ToList();
@@ -38,6 +36,11 @@ namespace CareerCloud.BusinessLogicLayer
         {
             Verify(pocos);
             _repository.Update();
+        }
+
+        public void Delete(SystemCountryCodePoco[] pocos)
+        {
+            _repository.Remove(pocos);
         }
 
         protected void Verify(SystemCountryCodePoco[] pocos)

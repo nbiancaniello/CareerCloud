@@ -3,8 +3,6 @@ using CareerCloud.Pocos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CareerCloud.BusinessLogicLayer
 {
@@ -25,6 +23,16 @@ namespace CareerCloud.BusinessLogicLayer
         {
             Verify(pocos);
             base.Update(pocos);
+        }
+
+        public override SecurityRolePoco Get(Guid id)
+        {
+            return base.Get(id);
+        }
+
+        public override List<SecurityRolePoco> GetAll()
+        {
+            return base.GetAll();
         }
 
         protected override void Verify(SecurityRolePoco[] pocos)

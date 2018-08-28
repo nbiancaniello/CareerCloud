@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CareerCloud.BusinessLogicLayer
 {
-    class CompanyJobLogic : BaseLogic<CompanyJobPoco>
+    public class CompanyJobLogic : BaseLogic<CompanyJobPoco>
     {
         public CompanyJobLogic(IDataRepository<CompanyJobPoco> repository) : base(repository)
         {

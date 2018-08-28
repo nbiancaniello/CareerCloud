@@ -1,17 +1,17 @@
 ﻿using CareerCloud.Pocos;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CareerCloud.EntityFrameworkDataAccess
 {
     class CareerCloudContext : DbContext
     {        
-        public CareerCloudContext() : base(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString) { }
+        public CareerCloudContext(bool createProxy = true) : base(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString)
+        {
+            Configuration.ProxyCreationEnabled = createProxy;
+            Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+        }
+
         public DbSet<ApplicantEducationPoco> ApplicantEducations { get; set; }
         public DbSet<ApplicantJobApplicationPoco> ApplicantJobApplications { get; set; }
         public DbSet<ApplicantProfilePoco> ApplicantProfiles { get; set; }

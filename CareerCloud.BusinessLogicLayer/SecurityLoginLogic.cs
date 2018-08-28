@@ -47,6 +47,16 @@ public class SecurityLoginLogic : BaseLogic<SecurityLoginPoco>
         base.Update(pocos);
     }
 
+    public override SecurityLoginPoco Get(Guid id)
+    {
+        return base.Get(id);
+    }
+
+    public override List<SecurityLoginPoco> GetAll()
+    {
+        return base.GetAll();
+    }
+
     protected override void Verify(SecurityLoginPoco[] pocos)
     {
         List<ValidationException> exceptions = new List<ValidationException>();
