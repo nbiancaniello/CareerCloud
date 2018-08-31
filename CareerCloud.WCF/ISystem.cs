@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CareerCloud.WCF
 {
-    [ServiceContract]
+    [ServiceContract(Name = "SystemService")]
     interface ISystem
     {
         #region SystemCountryCode Contracts

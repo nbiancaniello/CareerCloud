@@ -24,11 +24,6 @@ namespace CareerCloud.EntityFrameworkDataAccess
             _context.SaveChanges();
         }
 
-        public void CallStoredProc(string name, params Tuple<string, string>[] parameters)
-        {
-            throw new NotImplementedException();
-        }
-
         public IList<T> GetAll(params Expression<Func<T, object>>[] navigationProperties)
         {
             IQueryable<T> dbQuery = _context.Set<T>();

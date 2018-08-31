@@ -1,14 +1,11 @@
 ﻿using CareerCloud.Pocos;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CareerCloud.WCF
 {
-    [ServiceContract]
+    [ServiceContract (Name="ApplicantService")]
     interface IApplicant
     {
         #region ApplicantEducation Contracts

@@ -5,7 +5,7 @@ using System.ServiceModel;
 
 namespace CareerCloud.WCF
 {
-    [ServiceContract]
+    [ServiceContract(Name = "CompanyService")]
     interface ICompany
     {
         #region CompanyDescription Contracts
