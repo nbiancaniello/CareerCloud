@@ -28,7 +28,7 @@
   <xs:element name="GetSingleSystemCountryCode">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -90,7 +90,7 @@
   <xs:element name="GetSingleSystemLanguageCode">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

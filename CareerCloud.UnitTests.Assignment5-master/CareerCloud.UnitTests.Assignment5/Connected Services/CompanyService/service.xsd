@@ -28,7 +28,7 @@
   <xs:element name="GetSingleCompanyDescription">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -90,7 +90,7 @@
   <xs:element name="GetSingleCompanyJobDescription">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -152,7 +152,7 @@
   <xs:element name="GetSingleCompanyJobEducation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -214,7 +214,7 @@
   <xs:element name="GetSingleCompanyJob">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -276,7 +276,7 @@
   <xs:element name="GetSingleCompanyJobSkill">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -338,7 +338,7 @@
   <xs:element name="GetSingleCompanyLocation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -400,7 +400,7 @@
   <xs:element name="GetSingleCompanyProfile">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

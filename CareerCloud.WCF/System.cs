@@ -31,16 +31,16 @@ namespace CareerCloud.WCF
             return logic.GetAll();
         }
 
-        public SystemCountryCodePoco GetSingleSystemCountryCode(string Id)
+        public SystemCountryCodePoco GetSingleSystemCountryCode(string id)
         {
             var logic = new SystemCountryCodeLogic(new EFGenericRepository<SystemCountryCodePoco>(false));
-            return logic.Get(Id);
+            return logic.Get(id);
         }
 
-        public SystemLanguageCodePoco GetSingleSystemLanguageCode(string Id)
+        public SystemLanguageCodePoco GetSingleSystemLanguageCode(string id)
         {
             var logic = new SystemLanguageCodeLogic(new EFGenericRepository<SystemLanguageCodePoco>(false));
-            return logic.Get(Id);
+            return logic.Get(id);
         }
 
         public void RemoveSystemCountryCode(SystemCountryCodePoco[] items)

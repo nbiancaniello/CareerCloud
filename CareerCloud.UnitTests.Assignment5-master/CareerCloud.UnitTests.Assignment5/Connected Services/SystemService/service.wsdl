@@ -204,7 +204,7 @@
   </wsdl:binding>
   <wsdl:service name="System">
     <wsdl:port name="SystemEndpoint" binding="tns:SystemEndpoint">
-      <soap:address location="http://localhost:8733/Design_Time_Addresses/CareerCloud.WCF/System/" />
+      <soap:address location="http://localhost:8736/Design_Time_Addresses/CareerCloud.WCF/System/basic" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

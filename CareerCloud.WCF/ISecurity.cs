@@ -1,14 +1,10 @@
 ﻿using CareerCloud.Pocos;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CareerCloud.WCF
 {
-    [ServiceContract(Name = "SecurityService")]
+    [ServiceContract]
     interface ISecurity
     {
         #region SecurityLogin Contracts
@@ -17,25 +13,25 @@ namespace CareerCloud.WCF
         [OperationContract]
         List<SecurityLoginPoco> GetAllSecurityLogin();
         [OperationContract]
-        SecurityLoginPoco GetSingleSecurityLogin(Guid Id);
+        SecurityLoginPoco GetSingleSecurityLogin(string id);
         [OperationContract]
         void RemoveSecurityLogin(SecurityLoginPoco[] items);
         [OperationContract]
         void UpdateSecurityLogin(SecurityLoginPoco[] items);
         #endregion SecurityLogin Contracts
 
-        #region SecurityLoginLog Contracts
+        #region SecurityLoginsLog Contracts
         [OperationContract]
-        void AddSecurityLoginLog(SecurityLoginsLogPoco[] items);
+        void AddSecurityLoginsLog(SecurityLoginsLogPoco[] items);
         [OperationContract]
-        List<SecurityLoginsLogPoco> GetAllSecurityLoginLog();
+        List<SecurityLoginsLogPoco> GetAllSecurityLoginsLog();
         [OperationContract]
-        SecurityLoginsLogPoco GetSingleSecurityLoginLog(Guid Id);
+        SecurityLoginsLogPoco GetSingleSecurityLoginsLog(string id);
         [OperationContract]
-        void RemoveSecurityLoginLog(SecurityLoginsLogPoco[] items);
+        void RemoveSecurityLoginsLog(SecurityLoginsLogPoco[] items);
         [OperationContract]
-        void UpdateSecurityLoginLog(SecurityLoginsLogPoco[] items);
-        #endregion SecurityLoginLog Contracts
+        void UpdateSecurityLoginsLog(SecurityLoginsLogPoco[] items);
+        #endregion SecurityLoginsLog Contracts
 
         #region SecurityLoginsRole Contracts
         [OperationContract]
@@ -43,7 +39,7 @@ namespace CareerCloud.WCF
         [OperationContract]
         List<SecurityLoginsRolePoco> GetAllSecurityLoginsRole();
         [OperationContract]
-        SecurityLoginsRolePoco GetSingleSecurityLoginsRole(Guid Id);
+        SecurityLoginsRolePoco GetSingleSecurityLoginsRole(string id);
         [OperationContract]
         void RemoveSecurityLoginsRole(SecurityLoginsRolePoco[] items);
         [OperationContract]
@@ -56,11 +52,11 @@ namespace CareerCloud.WCF
         [OperationContract]
         List<SecurityRolePoco> GetAllSecurityRole();
         [OperationContract]
-        SecurityRolePoco GetSingleSecurityRole(Guid Id);
+        SecurityRolePoco GetSingleSecurityRole(string id);
         [OperationContract]
         void RemoveSecurityRole(SecurityRolePoco[] items);
         [OperationContract]
-        void UpdateSecurityRolePoco(SecurityRolePoco[] items);
+        void UpdateSecurityRole(SecurityRolePoco[] items);
         #endregion SecurityRolePoco Contracts
     }
 }

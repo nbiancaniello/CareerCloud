@@ -28,7 +28,7 @@
   <xs:element name="GetSingleApplicantEducation">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -90,7 +90,7 @@
   <xs:element name="GetSingleApplicantJobApplication">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -152,7 +152,7 @@
   <xs:element name="GetSingleApplicantProfile">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -214,7 +214,7 @@
   <xs:element name="GetSingleApplicantResume">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -276,7 +276,7 @@
   <xs:element name="GetSingleApplicantSkill">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -338,7 +338,7 @@
   <xs:element name="GetSingleApplicantWorkHistory">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

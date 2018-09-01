@@ -1,14 +1,10 @@
 ﻿using CareerCloud.Pocos;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CareerCloud.WCF
 {
-    [ServiceContract(Name = "SystemService")]
+    [ServiceContract]
     interface ISystem
     {
         #region SystemCountryCode Contracts
@@ -17,7 +13,7 @@ namespace CareerCloud.WCF
         [OperationContract]
         List<SystemCountryCodePoco> GetAllSystemCountryCode();
         [OperationContract]
-        SystemCountryCodePoco GetSingleSystemCountryCode(string Id);
+        SystemCountryCodePoco GetSingleSystemCountryCode(string id);
         [OperationContract]
         void RemoveSystemCountryCode(SystemCountryCodePoco[] items);
         [OperationContract]
@@ -30,7 +26,7 @@ namespace CareerCloud.WCF
         [OperationContract]
         List<SystemLanguageCodePoco> GetAllSystemLanguageCode();
         [OperationContract]
-        SystemLanguageCodePoco GetSingleSystemLanguageCode(string Id);
+        SystemLanguageCodePoco GetSingleSystemLanguageCode(string id);
         [OperationContract]
         void RemoveSystemLanguageCode(SystemLanguageCodePoco[] items);
         [OperationContract]

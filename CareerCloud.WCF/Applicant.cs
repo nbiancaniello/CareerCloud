@@ -80,40 +80,40 @@ namespace CareerCloud.WCF
             return logic.GetAll();
         }
 
-        public ApplicantEducationPoco GetSingleApplicantEducation(Guid id)
+        public ApplicantEducationPoco GetSingleApplicantEducation(string id)
         {
             var logic = new ApplicantEducationLogic(new EFGenericRepository<ApplicantEducationPoco>(false));
-            return logic.Get(id);
+            return logic.Get(Guid.Parse(id));
         }
 
-        public ApplicantJobApplicationPoco GetSingleApplicantJobApplication(Guid id)
+        public ApplicantJobApplicationPoco GetSingleApplicantJobApplication(string id)
         {
             var logic = new ApplicantJobApplicationLogic(new EFGenericRepository<ApplicantJobApplicationPoco>(false));
-            return logic.Get(id);
+            return logic.Get(Guid.Parse(id));
         }
 
-        public ApplicantProfilePoco GetSingleApplicantProfile(Guid id)
+        public ApplicantProfilePoco GetSingleApplicantProfile(string id)
         {
             var logic = new ApplicantProfileLogic(new EFGenericRepository<ApplicantProfilePoco>(false));
-            return logic.Get(id);
+            return logic.Get(Guid.Parse(id));
         }
 
-        public ApplicantResumePoco GetSingleApplicantResume(Guid id)
+        public ApplicantResumePoco GetSingleApplicantResume(string id)
         {
             var logic = new ApplicantResumeLogic(new EFGenericRepository<ApplicantResumePoco>(false));
-            return logic.Get(id);
+            return logic.Get(Guid.Parse(id));
         }
 
-        public ApplicantSkillPoco GetSingleApplicantSkill(Guid id)
+        public ApplicantSkillPoco GetSingleApplicantSkill(string id)
         {
             var logic = new ApplicantSkillLogic(new EFGenericRepository<ApplicantSkillPoco>(false));
-            return logic.Get(id);
+            return logic.Get(Guid.Parse(id));
         }
 
-        public ApplicantWorkHistoryPoco GetSingleApplicantWorkHistory(Guid id)
+        public ApplicantWorkHistoryPoco GetSingleApplicantWorkHistory(string id)
         {
             var logic = new ApplicantWorkHistoryLogic(new EFGenericRepository<ApplicantWorkHistoryPoco>(false));
-            return logic.Get(id);
+            return logic.Get(Guid.Parse(id));
         }
 
         public void RemoveApplicantEducation(ApplicantEducationPoco[] items)

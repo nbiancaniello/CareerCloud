@@ -28,10 +28,10 @@ namespace CareerCloud.UnitTests.Assignment5.CompanyService {
         System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyDescriptionPoco[]> GetAllCompanyDescriptionAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/GetSingleCompanyDescription", ReplyAction="http://tempuri.org/ICompany/GetSingleCompanyDescriptionResponse")]
-        CareerCloud.Pocos.CompanyDescriptionPoco GetSingleCompanyDescription(string Id);
+        CareerCloud.Pocos.CompanyDescriptionPoco GetSingleCompanyDescription(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/GetSingleCompanyDescription", ReplyAction="http://tempuri.org/ICompany/GetSingleCompanyDescriptionResponse")]
-        System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyDescriptionPoco> GetSingleCompanyDescriptionAsync(string Id);
+        System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyDescriptionPoco> GetSingleCompanyDescriptionAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/RemoveCompanyDescription", ReplyAction="http://tempuri.org/ICompany/RemoveCompanyDescriptionResponse")]
         void RemoveCompanyDescription(CareerCloud.Pocos.CompanyDescriptionPoco[] items);
@@ -58,10 +58,10 @@ namespace CareerCloud.UnitTests.Assignment5.CompanyService {
         System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobDescriptionPoco[]> GetAllCompanyJobDescriptionAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/GetSingleCompanyJobDescription", ReplyAction="http://tempuri.org/ICompany/GetSingleCompanyJobDescriptionResponse")]
-        CareerCloud.Pocos.CompanyJobDescriptionPoco GetSingleCompanyJobDescription(string Id);
+        CareerCloud.Pocos.CompanyJobDescriptionPoco GetSingleCompanyJobDescription(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/GetSingleCompanyJobDescription", ReplyAction="http://tempuri.org/ICompany/GetSingleCompanyJobDescriptionResponse")]
-        System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobDescriptionPoco> GetSingleCompanyJobDescriptionAsync(string Id);
+        System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobDescriptionPoco> GetSingleCompanyJobDescriptionAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/RemoveCompanyJobDescription", ReplyAction="http://tempuri.org/ICompany/RemoveCompanyJobDescriptionResponse")]
         void RemoveCompanyJobDescription(CareerCloud.Pocos.CompanyJobDescriptionPoco[] items);
@@ -88,10 +88,10 @@ namespace CareerCloud.UnitTests.Assignment5.CompanyService {
         System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobEducationPoco[]> GetAllCompanyJobEducationAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/GetSingleCompanyJobEducation", ReplyAction="http://tempuri.org/ICompany/GetSingleCompanyJobEducationResponse")]
-        CareerCloud.Pocos.CompanyJobEducationPoco GetSingleCompanyJobEducation(string Id);
+        CareerCloud.Pocos.CompanyJobEducationPoco GetSingleCompanyJobEducation(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/GetSingleCompanyJobEducation", ReplyAction="http://tempuri.org/ICompany/GetSingleCompanyJobEducationResponse")]
-        System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobEducationPoco> GetSingleCompanyJobEducationAsync(string Id);
+        System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobEducationPoco> GetSingleCompanyJobEducationAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/RemoveCompanyJobEducation", ReplyAction="http://tempuri.org/ICompany/RemoveCompanyJobEducationResponse")]
         void RemoveCompanyJobEducation(CareerCloud.Pocos.CompanyJobEducationPoco[] items);
@@ -118,10 +118,10 @@ namespace CareerCloud.UnitTests.Assignment5.CompanyService {
         System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobPoco[]> GetAllCompanyJobAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/GetSingleCompanyJob", ReplyAction="http://tempuri.org/ICompany/GetSingleCompanyJobResponse")]
-        CareerCloud.Pocos.CompanyJobPoco GetSingleCompanyJob(string Id);
+        CareerCloud.Pocos.CompanyJobPoco GetSingleCompanyJob(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/GetSingleCompanyJob", ReplyAction="http://tempuri.org/ICompany/GetSingleCompanyJobResponse")]
-        System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobPoco> GetSingleCompanyJobAsync(string Id);
+        System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobPoco> GetSingleCompanyJobAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/RemoveCompanyJob", ReplyAction="http://tempuri.org/ICompany/RemoveCompanyJobResponse")]
         void RemoveCompanyJob(CareerCloud.Pocos.CompanyJobPoco[] items);
@@ -148,10 +148,10 @@ namespace CareerCloud.UnitTests.Assignment5.CompanyService {
         System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobSkillPoco[]> GetAllCompanyJobSkillAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/GetSingleCompanyJobSkill", ReplyAction="http://tempuri.org/ICompany/GetSingleCompanyJobSkillResponse")]
-        CareerCloud.Pocos.CompanyJobSkillPoco GetSingleCompanyJobSkill(string Id);
+        CareerCloud.Pocos.CompanyJobSkillPoco GetSingleCompanyJobSkill(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/GetSingleCompanyJobSkill", ReplyAction="http://tempuri.org/ICompany/GetSingleCompanyJobSkillResponse")]
-        System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobSkillPoco> GetSingleCompanyJobSkillAsync(string Id);
+        System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobSkillPoco> GetSingleCompanyJobSkillAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/RemoveCompanyJobSkill", ReplyAction="http://tempuri.org/ICompany/RemoveCompanyJobSkillResponse")]
         void RemoveCompanyJobSkill(CareerCloud.Pocos.CompanyJobSkillPoco[] items);
@@ -178,10 +178,10 @@ namespace CareerCloud.UnitTests.Assignment5.CompanyService {
         System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyLocationPoco[]> GetAllCompanyLocationAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/GetSingleCompanyLocation", ReplyAction="http://tempuri.org/ICompany/GetSingleCompanyLocationResponse")]
-        CareerCloud.Pocos.CompanyLocationPoco GetSingleCompanyLocation(string Id);
+        CareerCloud.Pocos.CompanyLocationPoco GetSingleCompanyLocation(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/GetSingleCompanyLocation", ReplyAction="http://tempuri.org/ICompany/GetSingleCompanyLocationResponse")]
-        System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyLocationPoco> GetSingleCompanyLocationAsync(string Id);
+        System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyLocationPoco> GetSingleCompanyLocationAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/RemoveCompanyLocation", ReplyAction="http://tempuri.org/ICompany/RemoveCompanyLocationResponse")]
         void RemoveCompanyLocation(CareerCloud.Pocos.CompanyLocationPoco[] items);
@@ -208,10 +208,10 @@ namespace CareerCloud.UnitTests.Assignment5.CompanyService {
         System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyProfilePoco[]> GetAllCompanyProfileAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/GetSingleCompanyProfile", ReplyAction="http://tempuri.org/ICompany/GetSingleCompanyProfileResponse")]
-        CareerCloud.Pocos.CompanyProfilePoco GetSingleCompanyProfile(string Id);
+        CareerCloud.Pocos.CompanyProfilePoco GetSingleCompanyProfile(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/GetSingleCompanyProfile", ReplyAction="http://tempuri.org/ICompany/GetSingleCompanyProfileResponse")]
-        System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyProfilePoco> GetSingleCompanyProfileAsync(string Id);
+        System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyProfilePoco> GetSingleCompanyProfileAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICompany/RemoveCompanyProfile", ReplyAction="http://tempuri.org/ICompany/RemoveCompanyProfileResponse")]
         void RemoveCompanyProfile(CareerCloud.Pocos.CompanyProfilePoco[] items);
@@ -269,12 +269,12 @@ namespace CareerCloud.UnitTests.Assignment5.CompanyService {
             return base.Channel.GetAllCompanyDescriptionAsync();
         }
         
-        public CareerCloud.Pocos.CompanyDescriptionPoco GetSingleCompanyDescription(string Id) {
-            return base.Channel.GetSingleCompanyDescription(Id);
+        public CareerCloud.Pocos.CompanyDescriptionPoco GetSingleCompanyDescription(string id) {
+            return base.Channel.GetSingleCompanyDescription(id);
         }
         
-        public System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyDescriptionPoco> GetSingleCompanyDescriptionAsync(string Id) {
-            return base.Channel.GetSingleCompanyDescriptionAsync(Id);
+        public System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyDescriptionPoco> GetSingleCompanyDescriptionAsync(string id) {
+            return base.Channel.GetSingleCompanyDescriptionAsync(id);
         }
         
         public void RemoveCompanyDescription(CareerCloud.Pocos.CompanyDescriptionPoco[] items) {
@@ -309,12 +309,12 @@ namespace CareerCloud.UnitTests.Assignment5.CompanyService {
             return base.Channel.GetAllCompanyJobDescriptionAsync();
         }
         
-        public CareerCloud.Pocos.CompanyJobDescriptionPoco GetSingleCompanyJobDescription(string Id) {
-            return base.Channel.GetSingleCompanyJobDescription(Id);
+        public CareerCloud.Pocos.CompanyJobDescriptionPoco GetSingleCompanyJobDescription(string id) {
+            return base.Channel.GetSingleCompanyJobDescription(id);
         }
         
-        public System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobDescriptionPoco> GetSingleCompanyJobDescriptionAsync(string Id) {
-            return base.Channel.GetSingleCompanyJobDescriptionAsync(Id);
+        public System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobDescriptionPoco> GetSingleCompanyJobDescriptionAsync(string id) {
+            return base.Channel.GetSingleCompanyJobDescriptionAsync(id);
         }
         
         public void RemoveCompanyJobDescription(CareerCloud.Pocos.CompanyJobDescriptionPoco[] items) {
@@ -349,12 +349,12 @@ namespace CareerCloud.UnitTests.Assignment5.CompanyService {
             return base.Channel.GetAllCompanyJobEducationAsync();
         }
         
-        public CareerCloud.Pocos.CompanyJobEducationPoco GetSingleCompanyJobEducation(string Id) {
-            return base.Channel.GetSingleCompanyJobEducation(Id);
+        public CareerCloud.Pocos.CompanyJobEducationPoco GetSingleCompanyJobEducation(string id) {
+            return base.Channel.GetSingleCompanyJobEducation(id);
         }
         
-        public System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobEducationPoco> GetSingleCompanyJobEducationAsync(string Id) {
-            return base.Channel.GetSingleCompanyJobEducationAsync(Id);
+        public System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobEducationPoco> GetSingleCompanyJobEducationAsync(string id) {
+            return base.Channel.GetSingleCompanyJobEducationAsync(id);
         }
         
         public void RemoveCompanyJobEducation(CareerCloud.Pocos.CompanyJobEducationPoco[] items) {
@@ -389,12 +389,12 @@ namespace CareerCloud.UnitTests.Assignment5.CompanyService {
             return base.Channel.GetAllCompanyJobAsync();
         }
         
-        public CareerCloud.Pocos.CompanyJobPoco GetSingleCompanyJob(string Id) {
-            return base.Channel.GetSingleCompanyJob(Id);
+        public CareerCloud.Pocos.CompanyJobPoco GetSingleCompanyJob(string id) {
+            return base.Channel.GetSingleCompanyJob(id);
         }
         
-        public System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobPoco> GetSingleCompanyJobAsync(string Id) {
-            return base.Channel.GetSingleCompanyJobAsync(Id);
+        public System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobPoco> GetSingleCompanyJobAsync(string id) {
+            return base.Channel.GetSingleCompanyJobAsync(id);
         }
         
         public void RemoveCompanyJob(CareerCloud.Pocos.CompanyJobPoco[] items) {
@@ -429,12 +429,12 @@ namespace CareerCloud.UnitTests.Assignment5.CompanyService {
             return base.Channel.GetAllCompanyJobSkillAsync();
         }
         
-        public CareerCloud.Pocos.CompanyJobSkillPoco GetSingleCompanyJobSkill(string Id) {
-            return base.Channel.GetSingleCompanyJobSkill(Id);
+        public CareerCloud.Pocos.CompanyJobSkillPoco GetSingleCompanyJobSkill(string id) {
+            return base.Channel.GetSingleCompanyJobSkill(id);
         }
         
-        public System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobSkillPoco> GetSingleCompanyJobSkillAsync(string Id) {
-            return base.Channel.GetSingleCompanyJobSkillAsync(Id);
+        public System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyJobSkillPoco> GetSingleCompanyJobSkillAsync(string id) {
+            return base.Channel.GetSingleCompanyJobSkillAsync(id);
         }
         
         public void RemoveCompanyJobSkill(CareerCloud.Pocos.CompanyJobSkillPoco[] items) {
@@ -469,12 +469,12 @@ namespace CareerCloud.UnitTests.Assignment5.CompanyService {
             return base.Channel.GetAllCompanyLocationAsync();
         }
         
-        public CareerCloud.Pocos.CompanyLocationPoco GetSingleCompanyLocation(string Id) {
-            return base.Channel.GetSingleCompanyLocation(Id);
+        public CareerCloud.Pocos.CompanyLocationPoco GetSingleCompanyLocation(string id) {
+            return base.Channel.GetSingleCompanyLocation(id);
         }
         
-        public System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyLocationPoco> GetSingleCompanyLocationAsync(string Id) {
-            return base.Channel.GetSingleCompanyLocationAsync(Id);
+        public System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyLocationPoco> GetSingleCompanyLocationAsync(string id) {
+            return base.Channel.GetSingleCompanyLocationAsync(id);
         }
         
         public void RemoveCompanyLocation(CareerCloud.Pocos.CompanyLocationPoco[] items) {
@@ -509,12 +509,12 @@ namespace CareerCloud.UnitTests.Assignment5.CompanyService {
             return base.Channel.GetAllCompanyProfileAsync();
         }
         
-        public CareerCloud.Pocos.CompanyProfilePoco GetSingleCompanyProfile(string Id) {
-            return base.Channel.GetSingleCompanyProfile(Id);
+        public CareerCloud.Pocos.CompanyProfilePoco GetSingleCompanyProfile(string id) {
+            return base.Channel.GetSingleCompanyProfile(id);
         }
         
-        public System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyProfilePoco> GetSingleCompanyProfileAsync(string Id) {
-            return base.Channel.GetSingleCompanyProfileAsync(Id);
+        public System.Threading.Tasks.Task<CareerCloud.Pocos.CompanyProfilePoco> GetSingleCompanyProfileAsync(string id) {
+            return base.Channel.GetSingleCompanyProfileAsync(id);
         }
         
         public void RemoveCompanyProfile(CareerCloud.Pocos.CompanyProfilePoco[] items) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="83fcf187-5194-433d-bcdc-2106918a4655" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="87973453-00d9-4d61-89e7-1f9c63abc6b5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,10 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/CareerCloud.WCF/Applicant/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="3e1e7b94-c492-4c5b-bb17-f55e5e07346f" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CareerCloud.WCF/Applicant/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="6d848743-4984-4ba5-8a9c-68450b4eaf29" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CareerCloud.WCF/Applicant/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="fb5ca9fa-9fbf-4d1e-88b7-31687f642aae" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CareerCloud.WCF/Applicant/mex" />
-    <MetadataFile FileName="CareerCloud.Pocos.xsd" MetadataType="Schema" ID="70a76f09-8c9e-4382-8026-4e538e92fd98" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CareerCloud.WCF/Applicant/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="e8518c43-6bbb-4544-88a6-9b13da868e11" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CareerCloud.WCF/Applicant/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="64942422-0f7e-453c-9c9a-f8a6fddc1693" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CareerCloud.WCF/Applicant/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="37d56af0-a1cb-4b41-9db8-a81036f9f23e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CareerCloud.WCF/Applicant/mex" />
+    <MetadataFile FileName="CareerCloud.Pocos.xsd" MetadataType="Schema" ID="de40c48c-be58-4741-8de5-d7724be75775" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/CareerCloud.WCF/Applicant/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

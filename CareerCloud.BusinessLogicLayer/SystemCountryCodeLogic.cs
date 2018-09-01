@@ -29,13 +29,13 @@ namespace CareerCloud.BusinessLogicLayer
         public void Add(SystemCountryCodePoco[] pocos)
         {
             Verify(pocos);
-            _repository.Add();
+            _repository.Add(pocos);
         }
 
         public void Update(SystemCountryCodePoco[] pocos)
         {
             Verify(pocos);
-            _repository.Update();
+            _repository.Update(pocos);
         }
 
         public void Delete(SystemCountryCodePoco[] pocos)

@@ -5,7 +5,7 @@ using System.ServiceModel;
 
 namespace CareerCloud.WCF
 {
-    [ServiceContract (Name="ApplicantService")]
+    [ServiceContract]
     interface IApplicant
     {
         #region ApplicantEducation Contracts
@@ -14,7 +14,7 @@ namespace CareerCloud.WCF
         [OperationContract]
         List<ApplicantEducationPoco> GetAllApplicantEducation();
         [OperationContract]
-        ApplicantEducationPoco GetSingleApplicantEducation(Guid Id);
+        ApplicantEducationPoco GetSingleApplicantEducation(string id);
         [OperationContract]
         void RemoveApplicantEducation(ApplicantEducationPoco[] items);
         [OperationContract]
@@ -27,7 +27,7 @@ namespace CareerCloud.WCF
         [OperationContract]
         List<ApplicantJobApplicationPoco> GetAllApplicantJobApplication();
         [OperationContract]
-        ApplicantJobApplicationPoco GetSingleApplicantJobApplication(Guid Id);
+        ApplicantJobApplicationPoco GetSingleApplicantJobApplication(string id);
         [OperationContract]
         void RemoveApplicantJobApplication(ApplicantJobApplicationPoco[] items);
         [OperationContract]
@@ -40,7 +40,7 @@ namespace CareerCloud.WCF
         [OperationContract]
         List<ApplicantProfilePoco> GetAllApplicantProfile();
         [OperationContract]
-        ApplicantProfilePoco GetSingleApplicantProfile(Guid Id);
+        ApplicantProfilePoco GetSingleApplicantProfile(string id);
         [OperationContract]
         void RemoveApplicantProfile(ApplicantProfilePoco[] items);
         [OperationContract]
@@ -53,7 +53,7 @@ namespace CareerCloud.WCF
         [OperationContract]
         List<ApplicantResumePoco> GetAllApplicantResume();
         [OperationContract]
-        ApplicantResumePoco GetSingleApplicantResume(Guid Id);
+        ApplicantResumePoco GetSingleApplicantResume(string id);
         [OperationContract]
         void RemoveApplicantResume(ApplicantResumePoco[] items);
         [OperationContract]
@@ -66,7 +66,7 @@ namespace CareerCloud.WCF
         [OperationContract]
         List<ApplicantSkillPoco> GetAllApplicantSkill();
         [OperationContract]
-        ApplicantSkillPoco GetSingleApplicantSkill(Guid Id);
+        ApplicantSkillPoco GetSingleApplicantSkill(string id);
         [OperationContract]
         void RemoveApplicantSkill(ApplicantSkillPoco[] items);
         [OperationContract]
@@ -79,7 +79,7 @@ namespace CareerCloud.WCF
         [OperationContract]
         List<ApplicantWorkHistoryPoco> GetAllApplicantWorkHistory();
         [OperationContract]
-        ApplicantWorkHistoryPoco GetSingleApplicantWorkHistory(Guid Id);
+        ApplicantWorkHistoryPoco GetSingleApplicantWorkHistory(string id);
         [OperationContract]
         void RemoveApplicantWorkHistory(ApplicantWorkHistoryPoco[] items);
         [OperationContract]

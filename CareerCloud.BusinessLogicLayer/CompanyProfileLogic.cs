@@ -37,8 +37,8 @@ namespace CareerCloud.BusinessLogicLayer
                     exceptions.Add(new ValidationException(600,
                         $"Company Website cannot be empty. - {poco.Id}"));
                 }
-                else if (!poco.CompanyWebsite.EndsWith(".ca") ||
-                    !poco.CompanyWebsite.EndsWith(".com") ||
+                else if (!poco.CompanyWebsite.EndsWith(".ca") &&
+                    !poco.CompanyWebsite.EndsWith(".com") &&
                     !poco.CompanyWebsite.EndsWith(".biz"))
                 {
                     exceptions.Add(new ValidationException(600,
