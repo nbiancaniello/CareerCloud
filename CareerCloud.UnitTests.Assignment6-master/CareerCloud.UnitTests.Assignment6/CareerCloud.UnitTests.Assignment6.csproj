@@ -76,6 +76,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CareerCloud.BusinessLogicLayer\CareerCloud.BusinessLogicLayer.csproj">
+      <Project>{74cfa940-2b74-4ebf-8069-178fa463b4d2}</Project>
+      <Name>CareerCloud.BusinessLogicLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\CareerCloud.EntityFrameworkDataAccess\CareerCloud.EntityFrameworkDataAccess.csproj">
+      <Project>{455eeeaa-fb97-481f-af1d-afedde207a2c}</Project>
+      <Name>CareerCloud.EntityFrameworkDataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CareerCloud.Pocos\CareerCloud.Pocos.csproj">
       <Project>{e67b916a-313c-4394-8df6-88478875a5c5}</Project>
       <Name>CareerCloud.Pocos</Name>

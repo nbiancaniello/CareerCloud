@@ -31,9 +31,9 @@ namespace CareerCloud.UnitTests.Assignment6
         private CompanyJobDescriptionPoco _companyJobDescription;
         private CompanyLocationPoco _companyLocation;
         private SecurityLoginPoco _securityLogin;
-        private SecurityLoginsLogPoco _securityLoginLog;
+        private SecurityLoginsLogPoco _SecurityLoginsLog;
         private SecurityRolePoco _securityRole;
-        private SecurityLoginsRolePoco _securityLoginRole;
+        private SecurityLoginsRolePoco _SecurityLoginsRole;
 
         [TestInitialize]
         public void Init_Pocos()
@@ -49,9 +49,9 @@ namespace CareerCloud.UnitTests.Assignment6
             CompanyLocation_Init();
             SecurityLogin_Init();
             ApplicantProfile_Init();
-            SecurityLoginLog_Init();
+            SecurityLoginsLog_Init();
             SecurityRole_Init();
-            SecurityLoginRole_Init();
+            SecurityLoginsRole_Init();
             ApplicantEducation_Init();
             ApplicantResume_Init();
             ApplicantSkills_Init();
@@ -130,9 +130,9 @@ namespace CareerCloud.UnitTests.Assignment6
             };
         }
 
-        private void SecurityLoginRole_Init()
+        private void SecurityLoginsRole_Init()
         {
-            _securityLoginRole = new SecurityLoginsRolePoco()
+            _SecurityLoginsRole = new SecurityLoginsRolePoco()
             {
                 Id = Guid.NewGuid(),
                 Login = _securityLogin.Id,
@@ -151,9 +151,9 @@ namespace CareerCloud.UnitTests.Assignment6
             };
         }
 
-        private void SecurityLoginLog_Init()
+        private void SecurityLoginsLog_Init()
         {
-            _securityLoginLog = new SecurityLoginsLogPoco()
+            _SecurityLoginsLog = new SecurityLoginsLogPoco()
             {
                 Id = Guid.NewGuid(),
                 IsSuccesful = true,
@@ -359,18 +359,18 @@ namespace CareerCloud.UnitTests.Assignment6
             SecurityLoginUpdate();
             SecurityLoginCheck();
 
-            SecurityLoginLogAdd();
-            SecurityLoginLogCheck();
-            SecurityLoginLogUpdate();
-            SecurityLoginLogCheck();
+            SecurityLoginsLogAdd();
+            SecurityLoginsLogCheck();
+            SecurityLoginsLogUpdate();
+            SecurityLoginsLogCheck();
 
             SecurityRoleAdd();
             SecurityRoleCheck();
             SecurityRoleUpdate();
             SecurityRoleCheck();
 
-            SecurityLoginRoleAdd();
-            //SecurityLoginRoleCheck();
+            SecurityLoginsRoleAdd();
+            //SecurityLoginsRoleCheck();
 
             ApplicantProfileAdd();
             ApplicantProfileCheck();
@@ -411,9 +411,9 @@ namespace CareerCloud.UnitTests.Assignment6
             ApplicantEducationRemove();
             ApplicantProfileRemove();
 
-            SecurityLoginRoleRemove();
+            SecurityLoginsRoleRemove();
             SecurityRoleRemove();
-            SecurityLoginLogRemove();
+            SecurityLoginsLogRemove();
             SecurityLoginRemove();
 
             CompanyJobSkillRemove();
@@ -472,10 +472,10 @@ namespace CareerCloud.UnitTests.Assignment6
             Assert.IsInstanceOfType(result, typeof(OkResult));
         }
 
-        private void SecurityLoginRoleAdd()
+        private void SecurityLoginsRoleAdd()
         {
             SecurityLoginsRoleController controller = new SecurityLoginsRoleController();
-            IHttpActionResult result = controller.PostSecurityLoginsRole(new SecurityLoginsRolePoco[] { _securityLoginRole });
+            IHttpActionResult result = controller.PostSecurityLoginsRole(new SecurityLoginsRolePoco[] { _SecurityLoginsRole });
             Assert.IsInstanceOfType(result, typeof(OkResult));
         }
 
@@ -486,10 +486,10 @@ namespace CareerCloud.UnitTests.Assignment6
             Assert.IsInstanceOfType(result, typeof(OkResult));
         }
 
-        private void SecurityLoginLogAdd()
+        private void SecurityLoginsLogAdd()
         {
             SecurityLoginsLogController controller = new SecurityLoginsLogController();
-            IHttpActionResult result = controller.PostSecurityLoginsLog(new SecurityLoginsLogPoco[] { _securityLoginLog });
+            IHttpActionResult result = controller.PostSecurityLoginsLog(new SecurityLoginsLogPoco[] { _SecurityLoginsLog });
             Assert.IsInstanceOfType(result, typeof(OkResult));
         }
 
@@ -651,17 +651,17 @@ namespace CareerCloud.UnitTests.Assignment6
             Assert.AreEqual(_applicantProfile.PostalCode, contentResult.Content.PostalCode);
         }
 
-        private void SecurityLoginRoleCheck()
+        private void SecurityLoginsRoleCheck()
         {
             SecurityLoginsRoleController controller = new SecurityLoginsRoleController();
-            var result = controller.GetSecurityLoginsRole(_securityLoginRole.Id);
+            var result = controller.GetSecurityLoginsRole(_SecurityLoginsRole.Id);
             var contentResult = result as OkNegotiatedContentResult<SecurityLoginsRolePoco>;
 
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
-            Assert.AreEqual(_securityLoginRole.Id, contentResult.Content.Id);
-            Assert.AreEqual(_securityLoginRole.Login, contentResult.Content.Login);
-            Assert.AreEqual(_securityLoginRole.Role, contentResult.Content.Role);
+            Assert.AreEqual(_SecurityLoginsRole.Id, contentResult.Content.Id);
+            Assert.AreEqual(_SecurityLoginsRole.Login, contentResult.Content.Login);
+            Assert.AreEqual(_SecurityLoginsRole.Role, contentResult.Content.Role);
         }
 
         private void SecurityRoleCheck()
@@ -677,18 +677,18 @@ namespace CareerCloud.UnitTests.Assignment6
             Assert.AreEqual(_securityRole.IsInactive, contentResult.Content.IsInactive);
         }
 
-        private void SecurityLoginLogCheck()
+        private void SecurityLoginsLogCheck()
         {
             SecurityLoginsLogController controller = new SecurityLoginsLogController();
-            var result = controller.GetSecurityLoginsLog(_securityLoginLog.Id);
+            var result = controller.GetSecurityLoginsLog(_SecurityLoginsLog.Id);
             var contentResult = result as OkNegotiatedContentResult<SecurityLoginsLogPoco>;
 
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
-            Assert.AreEqual(_securityLoginLog.Id, contentResult.Content.Id);
-            Assert.AreEqual(_securityLoginLog.Login, contentResult.Content.Login);
-            Assert.AreEqual(_securityLoginLog.SourceIP, contentResult.Content.SourceIP);
-            Assert.AreEqual(_securityLoginLog.LogonDate.Date, contentResult.Content.LogonDate.Date);
+            Assert.AreEqual(_SecurityLoginsLog.Id, contentResult.Content.Id);
+            Assert.AreEqual(_SecurityLoginsLog.Login, contentResult.Content.Login);
+            Assert.AreEqual(_SecurityLoginsLog.SourceIP, contentResult.Content.SourceIP);
+            Assert.AreEqual(_SecurityLoginsLog.LogonDate.Date, contentResult.Content.LogonDate.Date);
         }
 
         private void SecurityLoginCheck()
@@ -697,7 +697,7 @@ namespace CareerCloud.UnitTests.Assignment6
             var result = controller.GetSecurityLogin(_securityLogin.Id);
             var contentResult = result as OkNegotiatedContentResult<SecurityLoginPoco>;
 
-            // Fields changed by SecurityLoginLogic commented out
+            // Fields changed by SecurityLoginsLogic commented out
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
             Assert.AreEqual(_securityLogin.Id, contentResult.Content.Id);
@@ -973,13 +973,13 @@ namespace CareerCloud.UnitTests.Assignment6
             Assert.IsInstanceOfType(result, typeof(OkResult));
         }
 
-        public void SecurityLoginLogUpdate()
+        public void SecurityLoginsLogUpdate()
         {
-            _securityLoginLog.IsSuccesful = false;
-            _securityLoginLog.LogonDate = Faker.Date.PastWithTime();
-            _securityLoginLog.SourceIP = Faker.Internet.IPv4().PadRight(15);
+            _SecurityLoginsLog.IsSuccesful = false;
+            _SecurityLoginsLog.LogonDate = Faker.Date.PastWithTime();
+            _SecurityLoginsLog.SourceIP = Faker.Internet.IPv4().PadRight(15);
             SecurityLoginsLogController controller = new SecurityLoginsLogController();
-            IHttpActionResult result = controller.PutSecurityLoginsLog(new SecurityLoginsLogPoco[] { _securityLoginLog });
+            IHttpActionResult result = controller.PutSecurityLoginsLog(new SecurityLoginsLogPoco[] { _SecurityLoginsLog });
             Assert.IsInstanceOfType(result, typeof(OkResult));
         }
 
@@ -1180,13 +1180,13 @@ namespace CareerCloud.UnitTests.Assignment6
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
-        private void SecurityLoginLogRemove()
+        private void SecurityLoginsLogRemove()
         {
             SecurityLoginsLogController controller = new SecurityLoginsLogController();
-            IHttpActionResult result = controller.DeleteSecurityLoginsLog(new SecurityLoginsLogPoco[] { _securityLoginLog });
+            IHttpActionResult result = controller.DeleteSecurityLoginsLog(new SecurityLoginsLogPoco[] { _SecurityLoginsLog });
             Assert.IsInstanceOfType(result, typeof(OkResult));
 
-            result = controller.GetSecurityLoginsLog(_securityLoginLog.Id);
+            result = controller.GetSecurityLoginsLog(_SecurityLoginsLog.Id);
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
@@ -1200,13 +1200,13 @@ namespace CareerCloud.UnitTests.Assignment6
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
-        private void SecurityLoginRoleRemove()
+        private void SecurityLoginsRoleRemove()
         {
             SecurityLoginsRoleController controller = new SecurityLoginsRoleController();
-            IHttpActionResult result = controller.DeleteSecurityLoginsRole(new SecurityLoginsRolePoco[] { _securityLoginRole });
+            IHttpActionResult result = controller.DeleteSecurityLoginsRole(new SecurityLoginsRolePoco[] { _SecurityLoginsRole });
             Assert.IsInstanceOfType(result, typeof(OkResult));
 
-            result = controller.GetSecurityLoginsRole(_securityLoginRole.Id);
+            result = controller.GetSecurityLoginsRole(_SecurityLoginsRole.Id);
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
@@ -1216,7 +1216,7 @@ namespace CareerCloud.UnitTests.Assignment6
             IHttpActionResult result = controller.DeleteApplicantProfile(new ApplicantProfilePoco[] { _applicantProfile });
             Assert.IsInstanceOfType(result, typeof(OkResult));
 
-            result = controller.GetApplicantProfile(_securityLoginRole.Id);
+            result = controller.GetApplicantProfile(_SecurityLoginsRole.Id);
             Assert.IsInstanceOfType(result, typeof(NotFoundResult));
         }
 
