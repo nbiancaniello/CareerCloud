@@ -15,10 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerCloud.EntityFramework
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerCloud.WCF", "CareerCloud.WCF\CareerCloud.WCF.csproj", "{15FD4E51-61A5-4F87-A729-93E8956798E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerCloud.UnitTests.Assignment5", "CareerCloud.UnitTests.Assignment5-master\CareerCloud.UnitTests.Assignment5\CareerCloud.UnitTests.Assignment5.csproj", "{943928D9-1890-4404-A8AF-5FF14079C136}"
-	ProjectSection(ProjectDependencies) = postProject
-		{15FD4E51-61A5-4F87-A729-93E8956798E0} = {15FD4E51-61A5-4F87-A729-93E8956798E0}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerCloud.WebAPI", "CareerCloud.WebAPI\CareerCloud.WebAPI.csproj", "{689EBF14-000D-41FF-9BB9-14F7993E14D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CareerCloud.UnitTests.Assignment6", "CareerCloud.UnitTests.Assignment6-master\CareerCloud.UnitTests.Assignment6\CareerCloud.UnitTests.Assignment6.csproj", "{878AFB57-B469-4CC7-A714-0E447A4DA8E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,10 +49,14 @@ Global
 		{15FD4E51-61A5-4F87-A729-93E8956798E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15FD4E51-61A5-4F87-A729-93E8956798E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15FD4E51-61A5-4F87-A729-93E8956798E0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{943928D9-1890-4404-A8AF-5FF14079C136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{943928D9-1890-4404-A8AF-5FF14079C136}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{943928D9-1890-4404-A8AF-5FF14079C136}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{943928D9-1890-4404-A8AF-5FF14079C136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{689EBF14-000D-41FF-9BB9-14F7993E14D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{689EBF14-000D-41FF-9BB9-14F7993E14D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{689EBF14-000D-41FF-9BB9-14F7993E14D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{689EBF14-000D-41FF-9BB9-14F7993E14D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{878AFB57-B469-4CC7-A714-0E447A4DA8E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{878AFB57-B469-4CC7-A714-0E447A4DA8E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{878AFB57-B469-4CC7-A714-0E447A4DA8E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{878AFB57-B469-4CC7-A714-0E447A4DA8E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
