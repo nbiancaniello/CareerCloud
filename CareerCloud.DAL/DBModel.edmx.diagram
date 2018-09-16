@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3bafde6cea854e2aa8b0d9e82df21d19" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Applicant_Educations" Width="1.5" PointX="5.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Applicant_Job_Applications" Width="1.5" PointX="8.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Applicant_Profiles" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Applicant_Resumes" Width="1.5" PointX="5.25" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Applicant_Skills" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Applicant_Work_History" Width="1.5" PointX="8.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Company_Descriptions" Width="1.5" PointX="6" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Company_Job_Educations" Width="1.5" PointX="8.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Company_Job_Skills" Width="1.5" PointX="8.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Company_Jobs" Width="1.5" PointX="6" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Company_Jobs_Descriptions" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Company_Locations" Width="1.5" PointX="6" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Company_Profiles" Width="1.5" PointX="3.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Security_Logins" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Security_Logins_Log" Width="1.5" PointX="3" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Security_Logins_Roles" Width="1.5" PointX="6" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.Security_Roles" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.System_Country_Codes" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="JOB_PORTAL_DBModel.System_Language_Codes" Width="1.5" PointX="3.75" PointY="26.875" IsExpanded="true" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Applicant_Educations_Applicant_Profiles" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Applicant_Job_Applications_Applicant_Profiles" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Applicant_Job_Applications_Company_Jobs" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Applicant_Profiles_Security_Logins" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Applicant_Profiles_System_Country_Codes" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Applicant_Resumes_Applicant_Profiles" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Applicant_Skills_Applicant_Profiles" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Applicant_Work_Experiences_Applicant_Profiles" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Applicant_Work_History_System_Country_Codes" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Company_Descriptions_Company_Profiles" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Company_Descriptions_System_Language_Codes" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Company_Job_Educations_Company_Jobs" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Company_Job_Skills_Company_Jobs" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Company_Jobs_Company_Profiles" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Company_Jobs_Descriptions_Company_Jobs" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Company_Locations_Company_Profiles" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Security_Logins_Log_Security_Logins" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Security_Logins_Roles_Security_Logins" ManuallyRouted="false" />
+        <AssociationConnector Association="JOB_PORTAL_DBModel.FK_Security_Logins_Roles_Security_Roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
