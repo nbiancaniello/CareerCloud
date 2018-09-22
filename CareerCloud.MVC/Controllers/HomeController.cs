@@ -1,4 +1,5 @@
-﻿using CareerCloud.EntityFrameworkDataAccess;
+﻿using CareerCloud.BusinessLogicLayer;
+using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
 using System;
 using System.Collections.Generic;
@@ -31,13 +32,16 @@ namespace CareerCloud.MVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var logic = new SecurityLoginLogic(new EFGenericRepository<SecurityLoginPoco>(false));
-            poco = logic.GetAll().Where(s => s.Login == poco.Login && s.Password == poco.Password).FirstOrDefault();
+            var securityLoginLogic = new SecurityLoginLogic(new EFGenericRepository<SecurityLoginPoco>(false));
+            poco = securityLoginLogic.GetAll().Where(s => s.Login == poco.Login && s.Password == poco.Password).FirstOrDefault();
+            var applicantProfileLogic = new ApplicantProfileLogic(new EFGenericRepository<ApplicantProfilePoco>(false));
+            var applicant = applicantProfileLogic.GetAll().Where(s => s.Login == poco.Id).FirstOrDefault();
+
             if (null == poco)
             {
                 return View();
             }
-            return RedirectToAction("Edit/" + poco.Id, "ApplicantProfile");
+            return RedirectToAction("Edit/" + applicant.Id, "ApplicantProfile");
         }
 
         public ActionResult Contact()

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -14,7 +13,7 @@ namespace CareerCloud.MVC.Controllers
     public class ApplicantProfileController : Controller
     {
         private CareerCloudContext db = new CareerCloudContext();
-                
+
         // GET: ApplicantProfile/Edit/5
         public ActionResult Edit(Guid? id)
         {
@@ -24,7 +23,7 @@ namespace CareerCloud.MVC.Controllers
             }
             ApplicantProfilePoco poco;
             var logic = new ApplicantProfileLogic(new EFGenericRepository<ApplicantProfilePoco>(false));
-            poco = logic.GetAll().Where(s => s.Login == id).FirstOrDefault();
+            poco = logic.GetAll().Where(s => s.Id == id).FirstOrDefault();
             if (poco == null)
             {
                 return HttpNotFound();
@@ -42,13 +41,14 @@ namespace CareerCloud.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Login,CurrentSalary,CurrentRate,Currency,Country,Province,Street,City,PostalCode,TimeStamp")] ApplicantProfilePoco applicantProfilePoco)
         {
+
             if (ModelState.IsValid)
             {
                 db.Entry(applicantProfilePoco).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Edit/"+applicantProfilePoco.Id);
             }
-            ViewBag.Login = new SelectList(db.SecurityLogins, "Id", "Login", applicantProfilePoco.Login);
+            //ViewBag.Login = new SelectList(db.SecurityLogins, "Id", "Login", applicantProfilePoco.Login);
             ViewBag.Country = new SelectList(db.SystemCountryCodes, "Code", "Name", applicantProfilePoco.Country);
             return View(applicantProfilePoco);
         }
