@@ -24,7 +24,7 @@ namespace CareerCloud.MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login([Bind(Include = "Login,Password,Created,PasswordUpdate,AgreementAccepted,IsLocked,IsInactive,EmailAddress,PhoneNumber,FullName,ForceChangePassword,PrefferredLanguage,TimeStamp")] SecurityLoginPoco poco)
+        public ActionResult Login([Bind(Include = "Login,Password")] SecurityLoginPoco poco)
         {
             if (poco.Login == null || poco.Password == null)
             {
@@ -37,7 +37,7 @@ namespace CareerCloud.MVC.Controllers
             {
                 return View();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Edit/" + poco.Id, "ApplicantProfile");
         }
 
         public ActionResult Contact()
