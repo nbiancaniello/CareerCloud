@@ -187,5 +187,4 @@ public class SecurityLoginLogic : BaseLogic<SecurityLoginPoco>
         string expectedHashString = ComputeHash(plainText, saltBytes);
         return (hashValue == expectedHashString);
     }
-
 }

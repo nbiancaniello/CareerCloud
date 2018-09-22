@@ -4,13 +4,17 @@ using System.Data.Entity;
 
 namespace CareerCloud.EntityFrameworkDataAccess
 {
-    class CareerCloudContext : DbContext
-    {        
-        public CareerCloudContext(bool createProxy = true) : base(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString)
+    public class CareerCloudContext : DbContext
+    {
+        public CareerCloudContext() : base(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString)
         {
-            Configuration.ProxyCreationEnabled = createProxy;
-            Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+            Configuration.ProxyCreationEnabled = true;
         }
+        //public CareerCloudContext(bool createProxy = true) : base(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString)
+        //{
+        //    Configuration.ProxyCreationEnabled = createProxy;
+        //    Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+        //}
 
         public DbSet<ApplicantEducationPoco> ApplicantEducations { get; set; }
         public DbSet<ApplicantJobApplicationPoco> ApplicantJobApplications { get; set; }

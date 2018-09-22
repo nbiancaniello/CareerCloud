@@ -13,7 +13,8 @@ namespace CareerCloud.EntityFrameworkDataAccess
 
         public EFGenericRepository(bool createProxy = true)
         {
-            _context = new CareerCloudContext(createProxy);
+            //_context = new CareerCloudContext(createProxy);
+            _context = new CareerCloudContext();
         }
         public void Add(params T[] items)
         {

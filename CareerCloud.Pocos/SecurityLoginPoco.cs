@@ -11,6 +11,9 @@ namespace CareerCloud.Pocos
         [Key]
         public Guid Id { get; set; }
         public String Login { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
         public String Password { get; set; }
         [Column("Created_Date")]
         public DateTime Created { get; set; }
