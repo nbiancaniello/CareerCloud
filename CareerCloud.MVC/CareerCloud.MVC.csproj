@@ -156,12 +156,16 @@
     <Compile Include="Controllers\ApplicantJobsController.cs" />
     <Compile Include="Controllers\ApplicantProfileController.cs" />
     <Compile Include="Controllers\CompanyDescriptionController.cs" />
+    <Compile Include="Controllers\CompanyJobsController.cs" />
     <Compile Include="Controllers\CompanyProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ApplicantJobs.cs" />
+    <Compile Include="Models\CompanyJobs.cs" />
+    <Compile Include="Models\JobsList.cs" />
+    <Compile Include="Controllers\JobsListsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +218,11 @@
     <Content Include="Views\CompanyDescription\Details.cshtml" />
     <Content Include="Views\CompanyDescription\Edit.cshtml" />
     <Content Include="Views\CompanyDescription\Index.cshtml" />
+    <Content Include="Views\CompanyJobs\Create.cshtml" />
+    <Content Include="Views\CompanyJobs\Delete.cshtml" />
+    <Content Include="Views\CompanyJobs\Details.cshtml" />
+    <Content Include="Views\CompanyJobs\Index.cshtml" />
+    <Content Include="Views\JobsLists\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

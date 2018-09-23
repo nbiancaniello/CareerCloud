@@ -45,7 +45,8 @@ namespace CareerCloud.MVC.Controllers
             {
                 return RedirectToAction("Index", "CompanyDescription");
             }
-            return RedirectToAction("Edit/" + applicant.Id, "ApplicantProfile");
+            System.Web.HttpContext.Current.Session["ApplicantProfileId"] = applicant.Id;
+            return RedirectToAction("Edit", "ApplicantProfile");
         }
 
         public ActionResult Contact()

@@ -14,8 +14,9 @@ namespace CareerCloud.MVC.Controllers
     {
         private CareerCloudContext db = new CareerCloudContext();
         // GET: ApplicantProfile/Edit/5
-        public ActionResult Edit(Guid? id)
+        public ActionResult Edit()
         {
+            Guid id = (Guid) System.Web.HttpContext.Current.Session["ApplicantProfileId"];
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -27,7 +28,6 @@ namespace CareerCloud.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            id = poco.Id;
             ViewBag.Login = new SelectList(db.SecurityLogins, "Id", "Login", poco.Login);
             ViewBag.Country = new SelectList(db.SystemCountryCodes, "Code", "Name", poco.Country);
             return View(poco);
@@ -45,16 +45,16 @@ namespace CareerCloud.MVC.Controllers
             {
                 db.Entry(applicantProfilePoco).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit/"+applicantProfilePoco.Id);
+                return RedirectToAction("Edit");
             }
             ViewBag.Country = new SelectList(db.SystemCountryCodes, "Code", "Name", applicantProfilePoco.Country);
             return View(applicantProfilePoco);
         }
 
         
-        public ActionResult RedirectJobs(Guid? id)
+        public ActionResult RedirectJobs()
         {
-            return RedirectToAction("Index/" + id, "ApplicantJobs");
+            return RedirectToAction("Index", "ApplicantJobs");
         }
 
         protected override void Dispose(bool disposing)

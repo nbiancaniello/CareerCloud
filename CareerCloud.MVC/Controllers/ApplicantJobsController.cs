@@ -18,9 +18,9 @@ namespace CareerCloud.MVC.Controllers
     public class ApplicantJobsController : Controller
     {
         // GET: ApplicantJobs
-        public ActionResult Index(Guid? id)
+        public ActionResult Index()
         {
-            var pocos = getJobsApplied(id);
+            var pocos = getJobsApplied();
             if (pocos == null)
             {
                 return HttpNotFound();
@@ -29,7 +29,12 @@ namespace CareerCloud.MVC.Controllers
             return View(pocos);
         }
 
-        public List<ApplicantJobs> getJobsApplied(Guid? id)
+        public ActionResult Apply()
+        {
+            return RedirectToAction("Index","JobsLists");
+        }
+
+        public List<ApplicantJobs> getJobsApplied()
         {
             List<ApplicantJobs> pocos = new List<ApplicantJobs>();
             using (SqlConnection _connection = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString))
@@ -42,7 +47,7 @@ namespace CareerCloud.MVC.Controllers
                                     join Company_Jobs_Descriptions cjd on aja.Job = cjd.Job
                                     join Company_Jobs cj on cjd.Job = cj.Id
                                     join Company_Descriptions cd on cj.Company = cd.Company
-                                    where aja.Applicant = '"+ id.ToString()+ "' and cd.LanguageID = 'EN'; "
+                                    where aja.Applicant = '"+ System.Web.HttpContext.Current.Session["ApplicantProfileId"].ToString() + "' and cd.LanguageID = 'EN'; "
                 };
 
                 _connection.Open();

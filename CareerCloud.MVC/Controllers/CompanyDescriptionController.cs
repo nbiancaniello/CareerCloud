@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
@@ -90,7 +87,9 @@ namespace CareerCloud.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Company,LanguageId,CompanyName,CompanyDescription,TimeStamp")] CompanyDescriptionPoco companyDescriptionPoco)
         {
-            companyDescriptionPoco.Company = (Guid)System.Web.HttpContext.Current.Session["companyProfileId"];
+            CompanyProfilePoco profile = new CompanyProfilePoco();
+            profile = (CompanyProfilePoco)System.Web.HttpContext.Current.Session["companyProfile"];
+            companyDescriptionPoco.Company = profile.Id;
             if (ModelState.IsValid)
             {
                 db.Entry(companyDescriptionPoco).State = EntityState.Modified;
@@ -102,31 +101,37 @@ namespace CareerCloud.MVC.Controllers
             return View(companyDescriptionPoco);
         }
 
-        // GET: CompanyDescription/Delete/5
-        public ActionResult Delete(Guid? id)
+        public ActionResult ViewJobs(Guid company)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CompanyDescriptionPoco companyDescriptionPoco = db.CompanyDescriptions.Find(id);
-            if (companyDescriptionPoco == null)
-            {
-                return HttpNotFound();
-            }
-            return View(companyDescriptionPoco);
+            System.Web.HttpContext.Current.Session["companyJobsId"] = company;
+            return RedirectToAction("Index", "CompanyJobs");
         }
 
-        // POST: CompanyDescription/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
-        {
-            CompanyDescriptionPoco companyDescriptionPoco = db.CompanyDescriptions.Find(id);
-            db.CompanyDescriptions.Remove(companyDescriptionPoco);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        // GET: CompanyDescription/Delete/5
+        //public ActionResult Delete(Guid? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    CompanyDescriptionPoco companyDescriptionPoco = db.CompanyDescriptions.Find(id);
+        //    if (companyDescriptionPoco == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(companyDescriptionPoco);
+        //}
+
+        //// POST: CompanyDescription/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(Guid id)
+        //{
+        //    CompanyDescriptionPoco companyDescriptionPoco = db.CompanyDescriptions.Find(id);
+        //    db.CompanyDescriptions.Remove(companyDescriptionPoco);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {

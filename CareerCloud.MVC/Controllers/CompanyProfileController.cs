@@ -72,7 +72,7 @@ namespace CareerCloud.MVC.Controllers
                         }
                     }
                 }
-                System.Web.HttpContext.Current.Session["companyProfileId"] = companyProfilePoco.Id;
+                System.Web.HttpContext.Current.Session["companyProfile"] = companyProfilePoco;
                 return RedirectToAction("Create","CompanyDescription");
             }
 
@@ -105,38 +105,38 @@ namespace CareerCloud.MVC.Controllers
             {
                 db.Entry(companyProfilePoco).State = EntityState.Modified;
                 db.SaveChanges();
+                System.Web.HttpContext.Current.Session["companyProfile"] = companyProfilePoco;
                 return RedirectToAction("Edit", "CompanyDescription");
             }
             return View(companyProfilePoco);
         }
 
-        // GET: CompanyProfile/Delete/5
-        public ActionResult Delete(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CompanyProfilePoco companyProfilePoco = db.CompanyProfiles.Find(id);
-            if (companyProfilePoco == null)
-            {
-                return HttpNotFound();
-            }
-            return View(companyProfilePoco);
-        }
+        //// GET: CompanyProfile/Delete/5
+        //public ActionResult Delete(Guid? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    CompanyProfilePoco companyProfilePoco = db.CompanyProfiles.Find(id);
+        //    if (companyProfilePoco == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(companyProfilePoco);
+        //}
 
-        // POST: CompanyProfile/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
-        {
-            // delete also description
-
-            CompanyProfilePoco companyProfilePoco = db.CompanyProfiles.Find(id);
-            db.CompanyProfiles.Remove(companyProfilePoco);
-            db.SaveChanges();
-            return RedirectToAction("Index","CompanyDescription");
-        }
+        //// POST: CompanyProfile/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(Guid id)
+        //{
+        //    // delete also description
+        //    CompanyProfilePoco companyProfilePoco = db.CompanyProfiles.Find(id);
+        //    db.CompanyProfiles.Remove(companyProfilePoco);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index","CompanyDescription");
+        //}
 
         protected override void Dispose(bool disposing)
         {
