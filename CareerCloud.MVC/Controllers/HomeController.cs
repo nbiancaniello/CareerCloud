@@ -1,11 +1,8 @@
 ﻿using CareerCloud.BusinessLogicLayer;
 using CareerCloud.EntityFrameworkDataAccess;
 using CareerCloud.Pocos;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace CareerCloud.MVC.Controllers
@@ -32,14 +29,21 @@ namespace CareerCloud.MVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
+            // Get user credentials, later profile information
             var securityLoginLogic = new SecurityLoginLogic(new EFGenericRepository<SecurityLoginPoco>(false));
-            poco = securityLoginLogic.GetAll().Where(s => s.Login == poco.Login && s.Password == poco.Password).FirstOrDefault();
+            poco = securityLoginLogic.GetAll().Where(s => s.Login.ToLower() == poco.Login.ToLower() && s.Password == poco.Password).FirstOrDefault();
             var applicantProfileLogic = new ApplicantProfileLogic(new EFGenericRepository<ApplicantProfilePoco>(false));
             var applicant = applicantProfileLogic.GetAll().Where(s => s.Login == poco.Id).FirstOrDefault();
 
             if (null == poco)
             {
                 return View();
+            }
+
+            // Only Administrator is allowed to view and manage Companies
+            if (poco.Login.ToLower() == "administrator")
+            {
+                return RedirectToAction("Index", "CompanyDescription");
             }
             return RedirectToAction("Edit/" + applicant.Id, "ApplicantProfile");
         }

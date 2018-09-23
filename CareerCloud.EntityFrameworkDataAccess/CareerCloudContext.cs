@@ -78,17 +78,17 @@ namespace CareerCloud.EntityFrameworkDataAccess
             modelBuilder.Entity<ApplicantProfilePoco>()
                 .Property(ap => ap.CurrentRate).IsOptional();
             modelBuilder.Entity<ApplicantProfilePoco>()
-                .Property(ap => ap.Currency).IsRequired();
+                .Property(ap => ap.Currency).IsOptional();
             modelBuilder.Entity<ApplicantProfilePoco>()
-                .Property(ap => ap.Country).IsRequired();
+                .Property(ap => ap.Country).IsOptional();
             modelBuilder.Entity<ApplicantProfilePoco>()
-                .Property(ap => ap.Province).IsRequired();
+                .Property(ap => ap.Province).IsOptional();
             modelBuilder.Entity<ApplicantProfilePoco>()
-                .Property(ap => ap.Street).IsRequired();
+                .Property(ap => ap.Street).IsOptional();
             modelBuilder.Entity<ApplicantProfilePoco>()
-                .Property(ap => ap.City).IsRequired();
+                .Property(ap => ap.City).IsOptional();
             modelBuilder.Entity<ApplicantProfilePoco>()
-                .Property(ap => ap.PostalCode).IsRequired();
+                .Property(ap => ap.PostalCode).IsOptional();
             modelBuilder.Entity<ApplicantProfilePoco>()
                 .Property(ap => ap.TimeStamp).IsRowVersion();
             #endregion Entity: ApplicantProfilePoco
@@ -248,13 +248,13 @@ namespace CareerCloud.EntityFrameworkDataAccess
             modelBuilder.Entity<CompanyProfilePoco>()
                 .Property(cp => cp.RegistrationDate).IsRequired();
             modelBuilder.Entity<CompanyProfilePoco>()
-                .Property(cp => cp.CompanyWebsite).IsRequired();
+                .Property(cp => cp.CompanyWebsite).IsOptional();
             modelBuilder.Entity<CompanyProfilePoco>()
                 .Property(cp => cp.ContactPhone).IsRequired();
             modelBuilder.Entity<CompanyProfilePoco>()
-                .Property(cp => cp.ContactName).IsRequired();
+                .Property(cp => cp.ContactName).IsOptional();
             modelBuilder.Entity<CompanyProfilePoco>()
-                .Property(cp => cp.CompanyLogo).IsRequired();
+                .Property(cp => cp.CompanyLogo).IsOptional();
             modelBuilder.Entity<CompanyProfilePoco>()
                 .Property(cp => cp.TimeStamp).IsRowVersion();
             #endregion Entity: CompanyProfilePoco
@@ -459,5 +459,6 @@ namespace CareerCloud.EntityFrameworkDataAccess
         }
 
         object placeHolderVariable;
+       
     }
 }

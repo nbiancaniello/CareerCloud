@@ -155,6 +155,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ApplicantJobsController.cs" />
     <Compile Include="Controllers\ApplicantProfileController.cs" />
+    <Compile Include="Controllers\CompanyDescriptionController.cs" />
+    <Compile Include="Controllers\CompanyProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,6 +205,15 @@
     <Content Include="Views\ApplicantProfile\Edit.cshtml" />
     <Content Include="Views\ApplicantJobsList.cshtml" />
     <Content Include="Views\ApplicantJobs\Index.cshtml" />
+    <Content Include="Views\CompanyProfile\Create.cshtml" />
+    <Content Include="Views\CompanyProfile\Delete.cshtml" />
+    <Content Include="Views\CompanyProfile\Details.cshtml" />
+    <Content Include="Views\CompanyProfile\Edit.cshtml" />
+    <Content Include="Views\CompanyDescription\Create.cshtml" />
+    <Content Include="Views\CompanyDescription\Delete.cshtml" />
+    <Content Include="Views\CompanyDescription\Details.cshtml" />
+    <Content Include="Views\CompanyDescription\Edit.cshtml" />
+    <Content Include="Views\CompanyDescription\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
