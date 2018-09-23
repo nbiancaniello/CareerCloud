@@ -10,14 +10,19 @@ namespace CareerCloud.Pocos
     {
         [Key]
         public Guid Id { get; set; }
+        [Display(Name = "Registration Date")]
         [Column("Registration_Date")]
         public DateTime RegistrationDate { get; set; }
+        [Display(Name = "Websire")]
         [Column("Company_Website")]
         public string CompanyWebsite { get; set; }
+        [Display(Name = "Contact Phone")]
         [Column("Contact_Phone")]
         public string ContactPhone { get; set; }
+        [Display(Name = "Contact Name")]
         [Column("Contact_Name")]
         public string ContactName { get; set; }
+        [Display(Name = "Logo")]
         [Column("Company_Logo")]
         public byte[] CompanyLogo { get; set; }
         [Timestamp]

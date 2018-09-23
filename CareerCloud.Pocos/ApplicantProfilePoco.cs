@@ -11,19 +11,27 @@ namespace CareerCloud.Pocos
         [Key]
         public Guid Id { get; set; }
         public Guid Login { get; set; }
+        [Display(Name = "Current Salary")]
         [Column("Current_Salary")]
         public Decimal? CurrentSalary { get; set; }
+        [Display(Name = "Current Rate")]
         [Column("Current_Rate")]
         public Decimal? CurrentRate { get; set; }
         public string Currency { get; set; }
+        [Required(ErrorMessage = "Country is required.")]
         [Column("Country_Code")]
         public string Country { get; set; }
+        [Required(ErrorMessage = "Province is required.")]
         [Column("State_Province_Code")]
         public string Province { get; set; }
+        [Required(ErrorMessage = "Street is required.")]
         [Column("Street_Address")]
         public string Street { get; set; }
+        [Required(ErrorMessage = "City is required.")]
         [Column("City_Town")]
         public string City { get; set; }
+        [Required(ErrorMessage = "Postal Code is required.")]
+        [Display(Name = "Postal Code")]
         [Column("Zip_Postal_Code")]
         public string PostalCode { get; set; }
         [Timestamp]

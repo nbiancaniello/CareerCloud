@@ -12,6 +12,7 @@ namespace CareerCloud.MVC.Controllers
         private CareerCloudContext db = new CareerCloudContext();
         public ActionResult Index()
         {
+            Session.Clear();
             return View();
         }
 
