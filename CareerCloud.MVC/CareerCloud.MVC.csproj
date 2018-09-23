@@ -219,7 +219,6 @@
     <Content Include="Views\CompanyDescription\Edit.cshtml" />
     <Content Include="Views\CompanyDescription\Index.cshtml" />
     <Content Include="Views\CompanyJobs\Create.cshtml" />
-    <Content Include="Views\CompanyJobs\Delete.cshtml" />
     <Content Include="Views\CompanyJobs\Details.cshtml" />
     <Content Include="Views\CompanyJobs\Index.cshtml" />
     <Content Include="Views\JobsLists\Index.cshtml" />

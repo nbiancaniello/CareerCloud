@@ -101,14 +101,6 @@ namespace CareerCloud.MVC.Controllers
             return View(companyJobs);
         }
 
-        // POST: CompanyJobs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
-        {
-            return RedirectToAction("Index");
-        }
-
         public List<CompanyJobs> getJobs(Guid? id)
         {
             List<CompanyJobs> pocos = new List<CompanyJobs>();

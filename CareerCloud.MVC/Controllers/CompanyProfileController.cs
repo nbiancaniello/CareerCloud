@@ -72,7 +72,7 @@ namespace CareerCloud.MVC.Controllers
                         }
                     }
                 }
-                System.Web.HttpContext.Current.Session["companyProfile"] = companyProfilePoco;
+                System.Web.HttpContext.Current.Session["companyProfileId"] = companyProfilePoco.Id;
                 return RedirectToAction("Create","CompanyDescription");
             }
 

@@ -18,6 +18,7 @@ namespace CareerCloud.MVC.Controllers
 
         public ActionResult Login()
         {
+            Session.Clear();
             return View();
         }
 

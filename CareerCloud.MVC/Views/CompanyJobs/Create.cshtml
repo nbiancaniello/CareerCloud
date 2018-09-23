@@ -1,10 +1,10 @@
 ﻿@model CareerCloud.MVC.Models.CompanyJobs
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Add a Job";
 }
 
-<h2>Create</h2>
+<h2>Add a job</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,16 +12,8 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>CompanyJobs</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.Company, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Company, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Company, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.JobName, htmlAttributes: new { @class = "control-label col-md-2" })

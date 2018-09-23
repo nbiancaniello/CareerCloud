@@ -13,7 +13,7 @@ namespace CareerCloud.Pocos
         [Display(Name = "Registration Date")]
         [Column("Registration_Date")]
         public DateTime RegistrationDate { get; set; }
-        [Display(Name = "Websire")]
+        [Display(Name = "Website")]
         [Column("Company_Website")]
         public string CompanyWebsite { get; set; }
         [Display(Name = "Contact Phone")]

@@ -1,10 +1,10 @@
 ﻿@model CareerCloud.Pocos.ApplicantProfilePoco
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "User Profile";
 }
 
-<h2>Edit</h2>
+<h2>Profile</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +12,6 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>ApplicantProfilePoco</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.Id)
@@ -92,7 +91,7 @@
 }
 
 <div>
-    @Html.ActionLink("View Jobs", "RedirectJobs", new { id = Model.Id}) |
+    @Html.ActionLink("View Jobs", "RedirectJobs") |
     @Html.ActionLink("Log Out", "Index", "Home")
 </div>
 

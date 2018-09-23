@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<CareerCloud.MVC.Models.CompanyJobs>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Company Jobs";
 }
 
-<h2>Index</h2>
+<h2>Company Jobs</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add New Job", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,8 +35,7 @@
             @Html.DisplayFor(modelItem => item.JobDescription)
         </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Details", "Details", new { id=item.Id })
         </td>
     </tr>
 }

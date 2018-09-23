@@ -1,11 +1,12 @@
 ﻿@model IEnumerable<CareerCloud.MVC.Models.JobsList>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Jobs List";
 }
 
-<h2>Index</h2>
+<h2>Jobs List</h2>
 
+@Html.ActionLink("Back to Jobs Applied", "RedirectJobs", "ApplicantProfile")
 <table class="table">
     <tr>
         <th>
@@ -20,21 +21,22 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CompanyName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.JobName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.JobDescription)
-        </td>
-        <td>
-            @Html.ActionLink("Apply", "Apply", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Apply", "Apply", new { id = item.Id })
+            </td>
+        </tr>
+    }
 
 </table>

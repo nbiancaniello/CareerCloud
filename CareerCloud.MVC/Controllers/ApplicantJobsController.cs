@@ -47,7 +47,7 @@ namespace CareerCloud.MVC.Controllers
                                     join Company_Jobs_Descriptions cjd on aja.Job = cjd.Job
                                     join Company_Jobs cj on cjd.Job = cj.Id
                                     join Company_Descriptions cd on cj.Company = cd.Company
-                                    where aja.Applicant = '"+ System.Web.HttpContext.Current.Session["ApplicantProfileId"].ToString() + "' and cd.LanguageID = 'EN'; "
+                                    where aja.Applicant = '"+ System.Web.HttpContext.Current.Session["ApplicantProfileId"].ToString() + "';"
                 };
 
                 _connection.Open();
