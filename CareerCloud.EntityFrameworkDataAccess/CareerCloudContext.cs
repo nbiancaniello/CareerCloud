@@ -457,5 +457,7 @@ namespace CareerCloud.EntityFrameworkDataAccess
 
             base.OnModelCreating(modelBuilder);
         }
+
+        object placeHolderVariable;
     }
 }

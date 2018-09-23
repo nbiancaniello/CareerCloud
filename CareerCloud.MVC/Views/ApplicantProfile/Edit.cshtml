@@ -92,7 +92,8 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("View Jobs", "RedirectJobs", new { id = Model.Id}) |
+    @Html.ActionLink("Log Out", "Index", "Home")
 </div>
 
 @section Scripts {

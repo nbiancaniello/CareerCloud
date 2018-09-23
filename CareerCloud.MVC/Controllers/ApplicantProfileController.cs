@@ -13,7 +13,6 @@ namespace CareerCloud.MVC.Controllers
     public class ApplicantProfileController : Controller
     {
         private CareerCloudContext db = new CareerCloudContext();
-
         // GET: ApplicantProfile/Edit/5
         public ActionResult Edit(Guid? id)
         {
@@ -48,9 +47,14 @@ namespace CareerCloud.MVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Edit/"+applicantProfilePoco.Id);
             }
-            //ViewBag.Login = new SelectList(db.SecurityLogins, "Id", "Login", applicantProfilePoco.Login);
             ViewBag.Country = new SelectList(db.SystemCountryCodes, "Code", "Name", applicantProfilePoco.Country);
             return View(applicantProfilePoco);
+        }
+
+        
+        public ActionResult RedirectJobs(Guid? id)
+        {
+            return RedirectToAction("Index/" + id, "ApplicantJobs");
         }
 
         protected override void Dispose(bool disposing)
